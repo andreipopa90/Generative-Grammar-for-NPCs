@@ -1,0 +1,19 @@
+NPC     : LOGS{LEVEL} TYPES
+TYPES   : TYPE TYPE(X) MOVES{TYPE TYPE?}
+MOVES   : MOVE^8 STATS{LOGS}
+STATS   : BASE EVS
+EVS     : HPE ATKE DEFE SPAE SPDE SPEE NATURE
+
+MOVE    : "moves.json"
+BASE    : "base.json"
+TYPE    : "types.json" 
+NATURE  : "natures.json"
+LOGS    : "logs.txt"
+
+LEVEL   : [0-9]+
+HPE     : [0..252]
+ATKE    : [0..252] 
+DEFE    : [0..252]
+SPAE    : [0..252]
+SPDE    : [0..252]
+SPEE    : [0..252]
