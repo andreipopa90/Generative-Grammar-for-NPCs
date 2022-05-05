@@ -1,19 +1,65 @@
-NPC     : LOGS{LEVEL} TYPES
-TYPES   : TYPE TYPE(X) MOVES{TYPE TYPE?}
-MOVES   : MOVE^8 STATS{LOGS}
-STATS   : BASE EVS
-EVS     : HPE ATKE DEFE SPAE SPDE SPEE NATURE
+NPCS(LOGS)  : NPC NPC NPC
+            global:
+                DomainAffix <- 0
+                LinkAffix <- 0
 
-MOVE    : "moves.json"
-BASE    : "base.json"
-TYPE    : "types.json" 
-NATURE  : "natures.json"
-LOGS    : "logs.txt"
+NPC         : TYPES STATS NATURE MOVES AFFIXES
 
-LEVEL   : [0-9]+
-HPE     : [0..252]
-ATKE    : [0..252] 
-DEFE    : [0..252]
-SPAE    : [0..252]
-SPDE    : [0..252]
-SPEE    : [0..252]
+TYPES       : TYPE TYPES
+            SIZE(TYPES) += 1
+            condition: 
+                SIZE(TYPES) <= 2
+                IF SIZE(TYPES) = 2 : TYPES[0] != TYPES[1]
+            | TYPE
+
+TYPE        : "Enumerate Types"
+            condition:
+                TYPE.DamageTaken[LOGS.PlayerType] != 1 OR 
+                ((TYPE.DamageTaken[LOGS.PlayerType] = 2 OR TYPE.DamageTaken[LOGS.PlayerType] = 3) AND
+                AFFIX.ReverseWeakness)
+
+STATS       : BASE EVS
+BASE        : HP ATK DEF SPA SPD SPE
+EVS         : HPEV ATKEV DEFEV SPAEV SPDEV SPEEV
+            condition:
+                HPEV + ATKEV + DEFEV + SPAEV + SPDEV + SPEEV <= 510
+HPEV        : [0-255]
+ATKEV       : [0-255]
+DEFEV       : [0-255]
+SPAEV       : [0-255]
+SPDEV       : [0-255]
+SPEEV       : [0-255]
+HP          : [0-150]
+ATK         : [0-150]
+DEF         : [0-150]
+SPA         : [0-150]
+SPD         : [0-150]
+SPE         : [0-150]
+
+NATURE      : "Enumerate natures"
+
+MOVES       : MOVE MOVE MOVE MOVE MOVE MOVE
+MOVE        : NAME POWER ACCURACY CATEGORY TYPE TARGET
+CATEGORY    : "Special" | "Status" | "Physical"
+TARGET      : "self" | "normal"
+ACCURACY    : [1..100]
+POWER       : [1..200]
+NAME        : [0-9]*[A-Z][a-z]+
+  
+AFFIXES     : AFFIX | AFFIXES AFFIX
+            condition:
+                SIZE(AFFIXES) <= 3
+                LinkAffix = 0 OR LinkAffix >= 2
+                DomainAffix <= 1        
+AFFIX       : "Health Link"
+                LinkAffix += 1
+            | "Domain"
+                DomainAffix += 1
+            | "Medic"
+            | "Avenger"
+            | "Evolve"
+            | "Sturdy"
+            | "Lifesteal"
+            | "Counter-Attack"
+            | "Reverse Weakness"
+            | "Reverse Ailment"         

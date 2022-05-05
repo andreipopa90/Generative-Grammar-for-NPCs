@@ -12,15 +12,17 @@ namespace GenerativeGrammar.Grammar
 
 		public void ReadGrammarFile()
 		{
-			string[] lines = File.ReadAllLines(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"", "Grammar", "Grammar.txt"));
-			Console.Write(lines);
+			string[] lines = File.ReadAllLines(Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
+			foreach (var line in lines)
+			{
+				Console.WriteLine(line);
+			}
 		}
 
 		static void Main()
 		{
 			Parser parser = new();
 			parser.ReadGrammarFile();
-			Console.WriteLine("Hello, world!");
 		}
 	}
 }
