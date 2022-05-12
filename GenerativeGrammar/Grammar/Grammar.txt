@@ -1,58 +1,64 @@
-NPCS(LOGS)  : NPC NPC NPC
+NPCS(LOGS)  := NPC NPC NPC
             global:
                 DomainAffix <- 0
                 LinkAffix <- 0
 
-NPC         : TYPES STATS NATURE MOVES AFFIXES
+NPC         := TYPES STATS NATURE MOVES AFFIXES
+            SIZE(TYPES) <- 0
+            SIZE(AFFIXES) <- 0
 
-TYPES       : TYPE TYPES
+TYPES       := TYPE TYPES | TYPE
             SIZE(TYPES) += 1
             condition: 
                 SIZE(TYPES) <= 2
-                IF SIZE(TYPES) = 2 : TYPES[0] != TYPES[1]
-            | TYPE
+                SIZE(TYPES) = 2 => TYPES[0] != TYPES[1]
 
-TYPE        : "Enumerate Types"
+TYPE        := "Bug" | "Dark" | "Dragon" | "Electric" | "Fairy" | "Fighting" | "Fire" | "Flying" | "Ghost" | "Grass" | "Ground" | "Ice" | "Normal" | "Poison" | "Psychic" | "Rock" | "Steel" | "Water"
+
+STATS       := BASE EVS
+BASE        := HP ATK DEF SPA SPD SPE
             condition:
-                TYPE.DamageTaken[LOGS.PlayerType] != 1 OR 
-                ((TYPE.DamageTaken[LOGS.PlayerType] = 2 OR TYPE.DamageTaken[LOGS.PlayerType] = 3) AND
-                AFFIX.ReverseWeakness)
-
-STATS       : BASE EVS
-BASE        : HP ATK DEF SPA SPD SPE
-EVS         : HPEV ATKEV DEFEV SPAEV SPDEV SPEEV
+                LOGS.PlayerDefense = "Special" => ATK >= 70
+EVS         := HPEV ATKEV DEFEV SPAEV SPDEV SPEEV
             condition:
                 HPEV + ATKEV + DEFEV + SPAEV + SPDEV + SPEEV <= 510
-HPEV        : [0-255]
-ATKEV       : [0-255]
-DEFEV       : [0-255]
-SPAEV       : [0-255]
-SPDEV       : [0-255]
-SPEEV       : [0-255]
-HP          : [0-150]
-ATK         : [0-150]
-DEF         : [0-150]
-SPA         : [0-150]
-SPD         : [0-150]
-SPE         : [0-150]
+HPEV        := [0-252]
+ATKEV       := [0-252]
+DEFEV       := [0-252]
+SPAEV       := [0-252]
+SPDEV       := [0-252]
+SPEEV       := [0-252]
+HP          := [0-150]
+ATK         := [0-150]
+DEF         := [0-150]
+SPA         := [0-150]
+SPD         := [0-150]
+SPE         := [0-150]
 
-NATURE      : "Enumerate natures"
+NATURE      := "Timid" | "Hasty" | "Jolly" | "Naive" | "Calm" | "Gentle" | "Sassy" | "Careful" | "Modest" | "Mild" | "Quiet" | "Rash" | "Bold" | "Relaxed" | "Impish" | "Lax" | "Lonely" | "Brave" | "Adamant" | "Naughty"
 
-MOVES       : MOVE MOVE MOVE MOVE MOVE MOVE
-MOVE        : NAME POWER ACCURACY CATEGORY TYPE TARGET
-CATEGORY    : "Special" | "Status" | "Physical"
-TARGET      : "self" | "normal"
-ACCURACY    : [1..100]
-POWER       : [1..200]
-NAME        : [0-9]*[A-Z][a-z]+
-  
-AFFIXES     : AFFIX | AFFIXES AFFIX
+MOVES       := MOVE MOVE MOVE MOVE MOVE MOVE
+MOVE(file.json) := NAME POWER ACCURACY CATEGORY TYPE TARGET
             condition:
-                SIZE(AFFIXES) <= 3
+                TYPE IN TYPES OR (TYPE NOT IN TYPES => TARGET = "self" OR CATEGORY = "Status")
+                LOGS.PlayerDefense = "Special" => TYPE = "Physical" OR TYPE = "Status"
+CATEGORY    := "Special" | "Status" | "Physical"
+TARGET      := "self" | "normal"
+ACCURACY    := [1..100]
+POWER       := [1..200]
+NAME        := [0-9]*[A-Z][a-z]+
+
+AFFIXES     := AFFIX | AFFIXES AFFIX
+            SIZE(AFFIXES) += 1
+            condition:
+                SIZE(AFFIXES) <= 2
                 LinkAffix = 0 OR LinkAffix >= 2
-                DomainAffix <= 1        
-AFFIX       : "Health Link"
+                DomainAffix <= 1
+                TYPES.DamageTaken[LOGS.PlayerType] = 1 => AFFIX = "Reverse Weakness"  
+                LOGS.PlayerHasAilments => AFFIX = "Reverse Ailment"     
+AFFIX(W)    := "HealthLink"
                 LinkAffix += 1
+                W += 1
             | "Domain"
                 DomainAffix += 1
             | "Medic"
@@ -60,6 +66,6 @@ AFFIX       : "Health Link"
             | "Evolve"
             | "Sturdy"
             | "Lifesteal"
-            | "Counter-Attack"
-            | "Reverse Weakness"
-            | "Reverse Ailment"         
+            | "CounterAttack"
+            | "ReverseWeakness"
+            | "ReverseAilment"    
