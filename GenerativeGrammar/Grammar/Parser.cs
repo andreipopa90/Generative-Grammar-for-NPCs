@@ -1,81 +1,105 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using System.Security.AccessControl;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Fare;
 
 namespace GenerativeGrammar.Grammar
 {
 
-	public struct Tree
-	{
-		public Node root;
-		public string name;
-	}
-
-	public struct Node
-	{
-		public string name;
-		public List<Node> neighbours;
-	}
-	
 	public class Parser
 	{
-		private Tree generativeTree;
-		public Parser()
+		public Dictionary<Node, List<string>> Augments { get; set; }
+		public Tree GenerativeTree { get; set; }
+
+		private Parser()
 		{
-			generativeTree = new()
+			Augments = new Dictionary<Node, List<string>>();
+			GenerativeTree = new Tree
 			{
-				root = new Node()
+				Name = "Enemy Wave",
+				Nodes = new List<Node>()
 			};
 		}
 
-		private string[] ReadGrammarFile()
+		private IEnumerable<string> ReadGrammarFile(string file)
 		{
-			string[] lines = File.ReadAllLines(Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
+			var lines = File.ReadAllLines(file);
 			return lines;
 		}
 
-		private void handleLines(string[] lines)
+		private void HandleLines(List<string> lines)
 		{
+			Node previousNode = default;
+			lines = lines.FindAll(e => !string.IsNullOrEmpty(e.Trim()));
 			foreach (var line in lines)
 			{
-				var sides = line.Split(":=");
+				var trimmedLine = line.Trim();
+				var sides = trimmedLine.Split(":=");
 				if (sides.Length == 2)
 				{
-					Node node = new Node();
-					node.name = sides[0].Trim();
-					List<Node> neighbours = new();
-					foreach (var neighbour in sides[1].Trim().Split("|")[0].Split(" "))
-					{
-						Node n = new Node();
-						n.name = neighbour.Trim();
-						neighbours.Add(n);
-					}
-					node.neighbours = neighbours;
-					foreach (var n in node.neighbours)
-					{
-						Console.WriteLine(n.name);
-					}
-					if (node.name.Contains("NPCS"))
-					{
-						generativeTree.root = node;
-					}
+					var node = HandleNodeLine(sides);
+					previousNode = node;
+				} else
+				{
+					if (!Augments.ContainsKey(previousNode)) Augments[previousNode] = new List<string>();
+					Augments[previousNode].Add(trimmedLine);
 				}
 			}
-		}
-
-		private List<Node> findNodesWithName(string name)
-		{
-			Node node = generativeTree.root;
 			
-			return null;
+			HandleAugments();
 		}
 
-		static void Main()
+		private void HandleAugments()
+		{
+			Console.WriteLine("Hello");
+		}
+
+		private Node HandleNodeLine(IReadOnlyList<string> sides)
+		{
+			var node = HandleLeftSide(sides[0].Trim());
+			var possibleNeighbours = HandleRightSide(sides[1].Trim());
+			node.PossibleNeighbours = possibleNeighbours;
+			if (node.PossibleNeighbours.Count == 1)
+			{
+				node.ActualNeighbours = node.PossibleNeighbours[0].Split("~").ToList();
+			}
+			GenerativeTree.Nodes.Add(node);
+			return node;
+		}
+
+		private List<string> HandleRightSide(string side)
+		{
+			var neighbours = side.Split(" | ");
+			return neighbours.ToList();
+		}
+
+		private Node HandleLeftSide(string side)
+		{
+			var parts = side.Split("(");
+			var node = new Node
+			{
+				Name = parts[0].Trim(),
+				Variables = new List<string>(),
+				Weights =  new List<int>(),
+				PossibleNeighbours = new List<string>(),
+				ActualNeighbours = new List<string>(),
+				Conditions = new List<string>(),
+				Source = new List<string>(),
+				GlobalVariables = new List<string>()
+			};
+			if (parts.Length == 2)
+			{
+				node.Variables = parts[1].Trim().Replace(")", "").Split(", ").ToList();
+			} 
+			return node;
+		}
+
+		private static void Main()
 		{
 			Parser parser = new();
-			var lines = parser.ReadGrammarFile();
-			parser.handleLines(lines);
+			var lines = parser.ReadGrammarFile(
+				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
+			parser.HandleLines(lines.ToList());
+			Console.WriteLine(parser.GenerativeTree);
 		}
 	}
 }
