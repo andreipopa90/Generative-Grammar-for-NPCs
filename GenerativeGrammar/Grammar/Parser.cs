@@ -50,6 +50,36 @@ namespace GenerativeGrammar.Grammar
 
 		private void HandleAugments()
 		{
+			foreach (var key in Augments.Keys)
+			{
+				bool condition = false;
+				bool global = false;
+				bool source = false;
+				
+				foreach (var augment in Augments[key])
+				{
+					if (augment.Contains("from"))
+					{
+						source = true;
+						condition = false; 
+						global = false;
+					}
+
+					if (augment.Contains("global"))
+					{
+						source = false;
+						condition = false; 
+						global = true;
+					}
+					
+					if (augment.Contains("condition"))
+					{
+						source = false;
+						condition = false; 
+						global = true;
+					}
+				}
+			}
 			Console.WriteLine("Hello");
 		}
 
