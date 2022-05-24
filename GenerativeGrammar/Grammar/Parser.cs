@@ -1,23 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Fare;
+﻿using GenerativeGrammar.NPC;
 
 namespace GenerativeGrammar.Grammar
 {
 
 	public class Parser
 	{
-		public Dictionary<Node, List<string>> Augments { get; set; }
-		public Tree GenerativeTree { get; set; }
+		private Dictionary<Node, string> Augments { get; set; }
+		private Tree GenerativeTree { get; set; }
+		private Log LevelLog { get; set; }
 
-		private Parser()
+		private Parser(Log levelLog)
 		{
-			Augments = new Dictionary<Node, List<string>>();
-			GenerativeTree = new Tree
-			{
-				Name = "Enemy Wave",
-				Nodes = new List<Node>()
-			};
+			Augments = new Dictionary<Node, string>();
+			GenerativeTree = new Tree();
+			LevelLog = levelLog;
 		}
 
 		private IEnumerable<string> ReadGrammarFile(string file)
@@ -34,53 +30,21 @@ namespace GenerativeGrammar.Grammar
 			{
 				var trimmedLine = line.Trim();
 				var sides = trimmedLine.Split(":=");
+				
 				if (sides.Length == 2)
 				{
 					var node = HandleNodeLine(sides);
 					previousNode = node;
 				} else
 				{
-					if (!Augments.ContainsKey(previousNode)) Augments[previousNode] = new List<string>();
-					Augments[previousNode].Add(trimmedLine);
+					
+					Augments[previousNode] = trimmedLine;
 				}
 			}
 			
 			HandleAugments();
-		}
-
-		private void HandleAugments()
-		{
-			foreach (var key in Augments.Keys)
-			{
-				bool condition = false;
-				bool global = false;
-				bool source = false;
-				
-				foreach (var augment in Augments[key])
-				{
-					if (augment.Contains("from"))
-					{
-						source = true;
-						condition = false; 
-						global = false;
-					}
-
-					if (augment.Contains("global"))
-					{
-						source = false;
-						condition = false; 
-						global = true;
-					}
-					
-					if (augment.Contains("condition"))
-					{
-						source = false;
-						condition = false; 
-						global = true;
-					}
-				}
-			}
-			Console.WriteLine("Hello");
+			var generator = new Generator(GenerativeTree, LevelLog);
+			generator.GenerateFromTree(GenerativeTree.Nodes[0]);
 		}
 
 		private Node HandleNodeLine(IReadOnlyList<string> sides)
@@ -90,46 +54,97 @@ namespace GenerativeGrammar.Grammar
 			node.PossibleNeighbours = possibleNeighbours;
 			if (node.PossibleNeighbours.Count == 1)
 			{
-				node.ActualNeighbours = node.PossibleNeighbours[0].Split("~").ToList();
+				node.ActualNeighbours = node.PossibleNeighbours[0].Split(" ~ ").ToList();
 			}
 			GenerativeTree.Nodes.Add(node);
 			return node;
 		}
-
-		private List<string> HandleRightSide(string side)
-		{
-			var neighbours = side.Split(" | ");
-			return neighbours.ToList();
-		}
-
+		
 		private Node HandleLeftSide(string side)
 		{
 			var parts = side.Split("(");
-			var node = new Node
-			{
-				Name = parts[0].Trim(),
-				Variables = new List<string>(),
-				Weights =  new List<int>(),
-				PossibleNeighbours = new List<string>(),
-				ActualNeighbours = new List<string>(),
-				Conditions = new List<string>(),
-				Source = new List<string>(),
-				GlobalVariables = new List<string>()
-			};
+			var node = new Node();
 			if (parts.Length == 2)
 			{
 				node.Variables = parts[1].Trim().Replace(")", "").Split(", ").ToList();
-			} 
+				
+			}
+			node.Name = parts[0].Trim();
 			return node;
+		}
+		
+		private List<string> HandleRightSide(string side)
+		{
+			var neighbours = side.Split("|");
+			return neighbours.Select(e => e.Trim()).ToList();
+		}
+		
+		private void HandleAugments()
+		{
+			foreach (var key in Augments.Keys)
+			{
+				var augment = Augments[key].Split(":", 2);
+				switch (augment[0])
+				{
+					case "global":
+						HandleGlobalVariables(augment[1]);
+						break;
+					case "from":
+						HandleSourceFile(key, augment[1]);
+						break;
+					case "condition":
+						HandleConditions(key, augment[1]);
+						break;
+						
+				}
+			}
+		}
+
+		private void HandleConditions(Node node, string s)
+		{
+			var conditions = s.Trim().Split("|");
+			foreach (var condition in conditions)
+			{
+				node.Conditions.Add(condition.Trim());
+			}
+		}
+
+		private void HandleSourceFile(Node node, string s)
+		{
+			node.Source = s.Trim();
+		}
+
+		private void HandleGlobalVariables(string s)
+		{
+			var variables = s.Trim().Split(" | ");
+			foreach (var variable in variables)
+			{
+				var expression = HandleNeighbourCondition(variable.Trim());
+				var leftSide = expression.Trim().Split("<-")[0];
+				var rightSide = expression.Trim().Split("<-")[1];
+				GenerativeTree.GlobalVariables.Add(leftSide.Trim(), int.Parse(rightSide.Trim()));
+			}
+		}
+
+		private string HandleNeighbourCondition(string rightSide)
+		{
+			var sides = rightSide.Split(" ? ");
+			if (sides.Length == 2)
+			{
+				var condition = sides[0].Trim();
+				var trueCondition = sides[1].Split(":")[0].Trim();
+				var falseCondition = sides[1].Split(":")[1].Trim();
+				return falseCondition;
+			}
+			return rightSide;
 		}
 
 		private static void Main()
 		{
-			Parser parser = new();
+			Parser parser = new(new Log());
 			var lines = parser.ReadGrammarFile(
 				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
 			parser.HandleLines(lines.ToList());
-			Console.WriteLine(parser.GenerativeTree);
 		}
 	}
 }
