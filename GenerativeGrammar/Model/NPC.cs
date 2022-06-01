@@ -1,6 +1,6 @@
 namespace GenerativeGrammar.NPC;
 
-public class NPC
+public class Npc
 {
     public Dictionary<string, int> BaseStats { get; set; }
     public Dictionary<string, int> EVS { get; set; }
@@ -10,7 +10,7 @@ public class NPC
     public List<string> Affixes { get; set; }
     public Dictionary<string, int> Attributes { get; set; }
 
-    public NPC()
+    public Npc()
     {
         BaseStats = new Dictionary<string, int>();
         EVS = new Dictionary<string, int>();

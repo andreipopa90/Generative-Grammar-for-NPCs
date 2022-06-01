@@ -4,6 +4,7 @@ public class Log
 {
     public Dictionary<string, List<int>> EnemyStats { get; set; }
     public bool HasAilments { get; set; }
+    public List<string> PlayerTypes { get; set; }
 
     public Log()
     {
@@ -15,5 +16,6 @@ public class Log
         EnemyStats.Add("SPD", new List<int>{1});
         EnemyStats.Add("SPE", new List<int>{1});
         HasAilments = false;
+        PlayerTypes = new List<string>();
     }
 }

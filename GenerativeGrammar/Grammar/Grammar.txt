@@ -51,6 +51,6 @@ NAME        := [0-9]*[A-Z][a-z]+
 BONUS       := [1] "Heal" : Heal += 1 | [1] "Burn" | [1] "Paralysis" | [1] "Poison"
 
 AFFIXES     := [1] AFFIX : SIZE(AFFIXES) += 1 | [1] AFFIXES AFFIX : SIZE(AFFIXES) += 1
-            condition: SIZE(AFFIXES) <= 2 |  SIZE(AFFIXES) => AFFIXES[0] != AFFIXES[1]
+            condition: SIZE(AFFIXES) <= 2 | SIZE(AFFIXES) = 2 => AFFIXES[0] != AFFIXES[1]
     
 AFFIX       := [LinkAffix] "HealthLink" : LinkAffix > 1 ? LinkAffix <- 1 : LinkAffix += 2 | [DomainAffix] "Domain" : DomainAffix -= 1 | [Heal] "Medic" : Heal -= 1 | [1] "Avenger" | [1] "Evolve" | [1] "Sturdy" | [1] "Lifesteal"| [1] "CounterAttack" | [Weakness] "ReverseWeakness" : Weakness > 1 ? Weakness -= 1 | [Ailment] "ReverseAilment" : Ailment > 1 ? Ailment -= 1
