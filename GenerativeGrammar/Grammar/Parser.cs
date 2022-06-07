@@ -22,7 +22,7 @@ namespace GenerativeGrammar.Grammar
 			return lines;
 		}
 
-		private void HandleLines(List<string> lines)
+		private Tree HandleLines(List<string> lines)
 		{
 			Node previousNode = default;
 			lines = lines.FindAll(e => !string.IsNullOrEmpty(e.Trim()));
@@ -43,8 +43,7 @@ namespace GenerativeGrammar.Grammar
 			}
 			
 			HandleAugments();
-			var generator = new Generator(GenerativeTree, LevelLog);
-			generator.GenerateFromTree(GenerativeTree.Nodes[0]);
+			return GenerativeTree;
 		}
 
 		private Node HandleNodeLine(IReadOnlyList<string> sides)
@@ -102,7 +101,7 @@ namespace GenerativeGrammar.Grammar
 
 		private void HandleConditions(Node node, string s)
 		{
-			var conditions = s.Trim().Split("|");
+			var conditions = s.Trim().Split(" | ");
 			foreach (var condition in conditions)
 			{
 				node.Conditions.Add(condition.Trim());
@@ -132,8 +131,8 @@ namespace GenerativeGrammar.Grammar
 			if (sides.Length == 2)
 			{
 				var condition = sides[0].Trim();
-				var trueCondition = sides[1].Split(":")[0].Trim();
-				var falseCondition = sides[1].Split(":")[1].Trim();
+				var trueCondition = sides[1].Split(" : ")[0].Trim();
+				var falseCondition = sides[1].Split(" : ")[1].Trim();
 				return falseCondition;
 			}
 			return rightSide;
@@ -144,7 +143,10 @@ namespace GenerativeGrammar.Grammar
 			Parser parser = new(new Log());
 			var lines = parser.ReadGrammarFile(
 				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
-			parser.HandleLines(lines.ToList());
+			Tree tree = parser.HandleLines(lines.ToList());
+			
+			var generator = new Generator(tree, parser.LevelLog);
+			generator.GenerateFromTree(tree.Nodes[0]);
 		}
 	}
 }
