@@ -1,4 +1,5 @@
 using System.Text;
+using GenerativeGrammar.Model;
 
 namespace GenerativeGrammar.Grammar;
 

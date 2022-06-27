@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace GenerativeGrammar.Grammar;
+namespace GenerativeGrammar.Model;
 
 public struct Node
 {
@@ -11,16 +11,18 @@ public struct Node
     public List<string> ActualNeighbours { get; set; }
     public List<string> Conditions { get; set; }
     public string Source { get; set; }
+    public bool IsLeafNode { get; set; }
 
     public Node()
     {
-        Name = "";
+        Name = string.Empty;
         Variables = new List<string>();
         Weights = new List<int>();
         PossibleNeighbours = new List<string>();
         ActualNeighbours = new List<string>();
         Conditions = new List<string>();
-        Source = "";
+        Source = string.Empty;
+        IsLeafNode = false;
     }
 
     public override string ToString()

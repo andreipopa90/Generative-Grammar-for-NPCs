@@ -1,0 +1,6 @@
+TYPES       := [W] TYPE ~ TYPES : TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1, SIZE(TYPES) += 1, W -= 1 | [1] TYPE : SIZE(TYPES) += 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1
+            condition: SIZE(TYPES) <= 2 | SIZE(TYPES) = 2 => TYPES[0] != TYPES[1]
+
+W <- 2
+W_leaf <- 2
+Node := [W] Case_1 : W -= 1 | [W_leaf] Case_2 

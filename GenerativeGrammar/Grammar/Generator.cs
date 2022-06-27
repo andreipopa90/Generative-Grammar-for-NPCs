@@ -1,9 +1,7 @@
 using System.Text;
 using GenerativeGrammar.NPC;
-using Fare;
 using GenerativeGrammar.Model;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Newtonsoft.Json;
 
 namespace GenerativeGrammar.Grammar;
 
@@ -31,199 +29,86 @@ public class Generator
         LevelLog = levelLog;
         Reader = new JSONReader();
     }
-    
-    public void GenerateFromTree(Node node)
+
+    private void GenerateFromTree(Node node)
     {
-        switch (node.Name)
+        if (!node.ActualNeighbours.Any())
         {
-            case "NPCS":
-            case "STATS":
-            case "EVS":
-            case "MOVES":
-                GoToNeighbours(node);
-                break;
-            case "NPC":
-                GenerateNpc(node);
-                break;
-            case "TYPES":
-            case "AFFIXES":
-                HandleNodeWithAttribute(node);
-                break;
-            case "MOVE":
-                HandleMove();
-                break;
-            case "BASE":
-                HandleBaseStats();
-                break;
-            case "NATURE":
-                HandleNature();
-                break;
-            default:
-                HandleEVs(node);
-                break;
+            DetermineActualNeighbours(node);
         }
-    }
-
-    private void HandleNodeWithAttribute(Node node)
-    {
-        var neighbours = node.PossibleNeighbours;
-        node.PossibleNeighbours = neighbours.Select(e => e.Split(" : ", 2)[0]).ToList();
-        var possibleAttributes = neighbours.Select(e => e.Split(" : ", 2)[1]).ToList();
-        var actualNeighbour = GetWeightedTerminalNode(node);
-        var index = node.PossibleNeighbours.IndexOf(
-            node.PossibleNeighbours.Find(e => e.Split("] ")[1].Trim().Equals(actualNeighbour))!);
-        HandleAttributes(possibleAttributes[index]);
-        var conditionResult = node.Conditions.Aggregate(true, (current, condition) => current 
-            && EvaluateCondition(condition));
-        if (conditionResult)
+        else if (!string.IsNullOrEmpty(node.Source))
         {
-            neighbours = actualNeighbour.Split(" ").Select(e => e.Trim()).ToList();
-            foreach (var neighbour in neighbours)
-            {
-                GenerateFromTree(GenerativeTree.Nodes.Find(e => e.Name.Equals(neighbour)));
-            }
+            HandleNodeFromSource(node);
         }
-    }
-
-    private void HandleBaseStats()
-    {
-        var stats = Reader.ReadBaseStatsJSON().Where(
-            e =>
-                (!LevelLog.PlayerDefense.Equals("Special") || e.BaseStats["atk"] >= 70) &&
-                (!LevelLog.PlayerDefense.Equals("Physical") || e.BaseStats["spa"] >= 70) &&
-                (!LevelLog.PlayerAttack.Equals("Special") || e.BaseStats["spd"] >= 70) &&
-                (!LevelLog.PlayerAttack.Equals("Physical") || e.BaseStats["def"] >= 70)
-            ).ToList();
-        Npcs[^1].BaseStats = stats[new Random().Next(0, stats.Count)];
-    }
-
-    private void HandleNature()
-    {
-        var plus = GetWeightedTerminalNode(GenerativeTree.Nodes.Find(e => e.Name.Equals("PLUS")));
-        plus = plus.Replace("\"", "");
-        var natures = Reader.ReadNatures();
-        natures = natures.Where(e => e.Plus.Equals(plus)).ToList();
-        Npcs[^1].Nature = natures[new Random().Next(0, natures.Count)];
-    }
-
-    private bool IsMoveValid(Move move)
-    {
-        return Npcs[^1].Types.Contains(move.Type) || move.Target.Equals("self") || move.Category.Equals("Status");
-    }
-
-    private void HandleMove()
-    {
-        var moves = Reader.ReadMovesJSON().Where(IsMoveValid).ToList();
-        Move result;
-        do
+        else if (node.IsLeafNode)
         {
-            result = moves[new Random().Next(0, moves.Count)];
-        } while (!IsMoveValid(result));
-        Npcs[^1].Moves.Add(result);
-    }
-
-    private void HandleEVs(Node node)
-    {
-        var value = GetValueFromRange(node);
-        if (!Npcs[^1].EVS.ContainsKey(node.Name))
-        {
-            Npcs[^1].EVS.Add(node.Name, value);
+            HandleLeafNode(node);
         }
         else
         {
-            Npcs[^1].EVS[node.Name] = value;
+            HandleNodeWithNeighbours(node);
         }
+        
     }
 
-    private void GoToNeighbours(Node node)
+    private void HandleLeafNode(Node node)
+    {
+        object value = null;
+
+        if (node.ActualNeighbours.Count == 1)
+        {
+            value = GetValueFromRange(node);
+        } else if (!node.ActualNeighbours.Any())
+
+        {
+            value = GetWeightedTerminalNode(node);
+        }
+        
+        Npcs[^1].GetType().GetProperty(node.Name)?.SetValue(Npcs[^1], value);
+        
+        throw new NotImplementedException();
+    }
+
+    private void HandleNodeWithNeighbours(Node node)
     {
         foreach (var neighbour in node.ActualNeighbours)
         {
-            GenerateFromTree(GenerativeTree.Nodes.Find(e => e.Name.Equals(neighbour.Replace("*", ""))));
+            GenerateFromTree(GenerativeTree.Nodes.Find(e => e.Name.Equals(neighbour)));
         }
     }
 
-    private void GenerateNpc(Node node)
+    private void HandleNodeFromSource(Node node)
     {
-        var npc = new Npc();
-        Npcs.Add(npc);
-        foreach (var next in node.ActualNeighbours.Select(neighbour => neighbour.Split(" : ", 2)))
-        {
-            if (next.Length == 2)
-            {
-                var attributes = next[1];
-                HandleAttributes(attributes);
-            }
-            GenerateFromTree(GenerativeTree.Nodes.Find(e => e.Name.Equals(next[0].Trim())));
-        }
+        throw new NotImplementedException();
     }
 
-    private void HandleAttributes(string attributes)
+    private void DetermineActualNeighbours(Node node)
     {
-        var attributesList = attributes.Trim().Split(", ");
-        foreach (var attribute in attributesList)
+        var nextNode = GetWeightedTerminalNode(node);
+        var sides = nextNode.Split(":", 2);
+        if (sides.Length == 2)
         {
-            var attr = HandleIfStatement(attribute);
-            if (attr.Contains("<-"))
-            {
-                var parts = attr.Split(" <- ");
-                Npcs[^1].Attributes.Add(parts[0].Trim(), int.Parse(parts[1].Trim()));
-            }
-            else
-            {
-                var parts = attr.Split(" += ");
-                if (GenerativeTree.GlobalVariables.ContainsKey(parts[0].Trim()))
-                {
-                    GenerativeTree.GlobalVariables[parts[0]] += int.Parse(parts[1].Trim());
-                }
-                else
-                {
-                    Npcs[^1].Attributes[parts[0].Trim()] += int.Parse(parts[1].Trim()) ;
-                }
-            }
-            
+            var attributes = sides[1].Trim();
+        }
+        var neighbours = sides[0].Trim();
+        var conditionResult = node.Conditions.Aggregate(true, (current, condition) => current && HandleCondition(condition));
+        foreach (var neighbour in neighbours)
+        {
+            GenerateFromTree(GenerativeTree.Nodes.Find(e => e.Name.Equals(neighbour)));
         }
     }
 
     private string HandleIfStatement(string attribute)
     {
         var parts = attribute.Split(" ? ");
-        if (parts.Length != 2) return parts[0].Trim();
-        var condition = EvaluateCondition(parts[0]);
+        if (parts.Length == 1) return parts[0].Trim();
+        var condition = HandleCondition(parts[0]);
         var statements = parts[1].Split(" : ");
         var trueStatement = statements[0].Trim();
         if (statements.Length != 2) return condition ? trueStatement : "";
         var falseStatement = statements[1].Trim();
         return condition ? trueStatement : falseStatement;
 
-    }
-
-    private bool EvaluateCondition(string condition)
-    {
-        var parts = condition.Split(" ").ToList();
-
-        for (var i = 0; i < parts.Count; i++)
-        {
-            if (_operands.ContainsKey(parts[i]))
-            {
-                parts[i] = _operands[parts[i]];
-            }
-            else if (!_mathSymbols.Contains(parts[i]))
-            {
-                parts[i] = HandleVariable(parts[i]).ToString();
-            }
-        }
-
-        var result = string.Join(" ", parts);
-        if (!result.Contains("=>")) return CSharpScript.EvaluateAsync<bool>(result).Result;
-        
-        var sb = new StringBuilder();
-        sb.Append("!(");
-        var sides = result.Split(" => ");
-        sb.Append(sides[0]).Append(") || (");
-        sb.Append(sides[1]).Append(')');
-        result = sb.ToString();
-        return CSharpScript.EvaluateAsync<bool>(result).Result;
     }
 
     /**
@@ -247,71 +132,6 @@ public class Generator
             else sb.Append(HandleVariable(part));
         }
         return CSharpScript.EvaluateAsync<int>(sb.ToString()).Result;
-    }
-    
-    private int HandleVariable(string variableString)
-    {
-        Console.WriteLine(variableString);
-        try
-        {
-            return int.Parse(variableString);
-        }
-        catch (FormatException)
-        {
-            var parts = variableString.Split("(");
-            if (parts.Length == 1)
-            {
-                var result = ParseVariable(parts[0]);
-                return int.Parse(result.ToString()!);
-            }
-
-            switch (parts[0])
-            {
-                case "MIN":
-                    var variables = (List<int>)ParseVariable(parts[1].Replace(")", "").Trim());
-                    return variables.AsQueryable().Min();
-                case "MAX":
-                    variables = (List<int>)ParseVariable(parts[1].Replace(")", "").Trim());
-                    return variables.AsQueryable().Max();
-                case "TYPE.DamageTaken":
-                    // Need json files for this
-                    return 1;
-            }
-
-            if (Npcs[^1].Attributes.ContainsKey(variableString)) return Npcs[^1].Attributes[variableString];
-            
-            return -1;
-        }
-    }
-
-    private object ParseVariable(string variableString)
-    {
-        var parts = variableString.Trim().Split(".");
-        if (parts.Length == 1)
-        {
-            if (Npcs[^1].Attributes.ContainsKey(parts[0].Trim())) 
-                return Npcs[^1].Attributes[parts[0].Trim()];
-            if (GenerativeTree.GlobalVariables.ContainsKey(parts[0].Trim()))
-                return GenerativeTree.GlobalVariables[parts[0].Trim()];
-        }
-        else
-        {
-            switch (parts[1])
-            {
-                case "EnemyBase":
-                    return LevelLog.EnemyStats[parts[2].Trim()];
-                case "PlayerTypes":
-                    return LevelLog.PlayerTypes;
-                case "HasAilment":
-                    return LevelLog.HasAilments;
-                case "PlayerDefense":
-                    return LevelLog.PlayerDefense;
-                case "PlayerAttack":
-                    return LevelLog.PlayerAttack;
-            }
-        }
-
-        return variableString;
     }
 
     private string GetWeightedTerminalNode(Node typeNode)
@@ -338,8 +158,9 @@ public class Generator
         return result;
     }
 
-    private static int PickIndexFromWeightedList(List<int> weights)
+    public static int PickIndexFromWeightedList(List<int> weights)
     {
+        weights = weights.Select(e => e < 0 ? 0 : e).ToList();
         for (var i = 1; i < weights.Count; i++)
         {
             weights[i] += weights[i - 1];
@@ -368,5 +189,137 @@ public class Generator
         }
 
         return low;
+    }
+
+    public bool HandleCondition(string condition)
+    {
+        condition = HandleIn(condition);
+        var tokens = condition.Split(" ");
+        var result = new List<string>();
+        foreach (var token in tokens)
+        {
+            if (_operands.ContainsKey(token))
+            {
+                result.Add(_operands[token]);
+            }
+            else if (_mathSymbols.Contains(token)) result.Add(token);
+            else
+            {
+                var brackets = HandleConditionBrackets(token);
+                
+                result.Add(brackets[0] + HandleVariable(token) + brackets[1]);
+            }
+        }
+
+        condition = HandleImply(string.Join(" ", result)).ToLower();
+        Console.WriteLine(condition);
+        return CSharpScript.EvaluateAsync<bool>(condition).Result;
+    }
+
+    private string HandleImply(string condition)
+    {
+        //Assume there is only one implication per condition
+        var tokens = condition.Split(" => ", 2);
+        if (tokens.Length == 2)
+        {
+            condition = "!(" + tokens[0] + ") || (" + tokens[1] + ")";
+        }
+
+        return condition;
+    }
+
+    private string HandleIn(string condition)
+    {
+        condition = condition.Trim();
+        var tokens = condition.Split(" ");
+        while (tokens.Contains("IN"))
+        {
+            var negativeFlag = false;
+            var index = Array.IndexOf(tokens, "IN");
+            int startIndex;
+            if (!tokens[index].Equals("IN")) continue;
+            string variable;
+            if (tokens[index - 1].Equals("NOT"))
+            {
+                negativeFlag = true;
+                variable = HandleVariable(tokens[index - 2]).ToString() ?? string.Empty;
+                startIndex = index - 2;
+            }
+            else
+            {
+                variable = HandleVariable(tokens[index - 1]).ToString() ?? string.Empty;
+                startIndex = index - 1;
+            }
+
+            var list = (List<string>) HandleVariable(tokens[index + 1]);
+            var endIndex = index + 1;
+
+            var startBrackets = HandleConditionBrackets(tokens[startIndex])[0];
+            var endBrackets = HandleConditionBrackets(tokens[endIndex])[1];
+            
+            var result = negativeFlag ? (!list.Contains(variable)).ToString() : list.Contains(variable).ToString();
+            result = startBrackets + result + endBrackets;
+            
+            var tokensList = tokens.ToList();
+            tokensList.RemoveRange(startIndex, endIndex - startIndex + 1);
+            tokensList.Insert(startIndex, result);
+            
+            tokens = tokensList.ToArray();
+        }
+
+        return string.Join(" ", tokens);
+    }
+
+    private object HandleVariable(string token)
+    {
+        token = token.Replace("(", "").Replace(")", "");
+        var index = -1;
+        dynamic result;
+        
+        if (token.Contains('['))
+        {
+            index = int.Parse(token.Replace("]", "").Split("[")[1]);
+            token = token.Split("[")[0];
+        }
+        
+        if (token.StartsWith("\"") || int.TryParse(token, out _) || bool.TryParse(token, out _))
+        {
+            result = token.Replace("\"", "");
+        }
+
+        else if (token.StartsWith("LOGS."))
+        {
+            var sides = token.Split(".");
+            dynamic field = LevelLog.GetType().GetProperty(sides[1])?.GetValue(LevelLog) ?? throw new InvalidOperationException();
+            result = sides.Length == 3 ? field[sides[2]] : field;
+        }
+        
+        else if (GenerativeTree.GlobalVariables.ContainsKey(token)) result = GenerativeTree.GlobalVariables[token];
+        
+        else if (Npcs[^1].Attributes.ContainsKey(token)) result = Npcs[^1].Attributes[token];
+        else result = Npcs[^1].ValuesOfNodes[token];
+        
+        return index != -1 ? result[index] : result;
+    }
+
+    private string[] HandleConditionBrackets(string token)
+    {
+        var startBracket = "";
+        var endBracket = "";
+        foreach (var character in token)
+        {
+            switch (character)
+            {
+                case '(':
+                    startBracket += '(';
+                    break;
+                case ')':
+                    endBracket += ')';
+                    break;
+            }
+        }
+
+        var result = new[] {startBracket, endBracket};
+        return result;
     }
 }

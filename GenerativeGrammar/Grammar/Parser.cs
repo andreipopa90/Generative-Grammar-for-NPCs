@@ -1,4 +1,5 @@
-﻿using GenerativeGrammar.NPC;
+﻿using GenerativeGrammar.Model;
+using GenerativeGrammar.NPC;
 
 namespace GenerativeGrammar.Grammar
 {
@@ -43,6 +44,7 @@ namespace GenerativeGrammar.Grammar
 			}
 			
 			HandleAugments();
+			
 			return GenerativeTree;
 		}
 
@@ -140,13 +142,28 @@ namespace GenerativeGrammar.Grammar
 
 		private static void Main()
 		{
-			Parser parser = new(new Log());
-			var lines = parser.ReadGrammarFile(
-				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
-			Tree tree = parser.HandleLines(lines.ToList());
-			
-			var generator = new Generator(tree, parser.LevelLog);
-			generator.GenerateFromTree(tree.Nodes[0]);
+			// Parser parser = new(new Log());
+			// var lines = parser.ReadGrammarFile(
+			// 	Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
+			// var tree = parser.HandleLines(lines.ToList());
+			//
+			// var generator = new Generator(tree, parser.LevelLog);
+			// generator.GenerateFromTree(tree.Nodes[0]);
+			// var levelLog = new Log();
+			// levelLog.PlayerTypes.Add("Bug");
+			// levelLog.PlayerTypes.Add("Dark");
+			// levelLog.PlayerTypes.Add("Dragon");
+			// var generator = new Generator(new Tree(), levelLog);
+			// const string condition = "(\"Dragon\" IN LOGS.PlayerTypes OR \"Dark\" NOT IN LOGS.PlayerTypes) => " +
+			//                          "\"Water\" IN LOGS.PlayerTypes";
+			// Console.WriteLine(generator.HandleCondition(condition));
+
+			for (var i = 1; i <= 100; i++)
+			{
+				var index = Generator.PickIndexFromWeightedList(new List<int> {-10, 0, 1, 1, 1});
+				Console.WriteLine(index);
+			}
+
 		}
 	}
 }
