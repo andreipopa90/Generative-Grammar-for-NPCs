@@ -28,12 +28,7 @@ public struct Node
     public override string ToString()
     {
         var result = new StringBuilder();
-        result.Append(this.Name).Append(" [");
-        foreach (var neighbour in PossibleNeighbours)
-        {
-            result.Append(neighbour).Append(" <> ");
-        }
-
+        result.Append(Name);
         return result.ToString();
     }
 }

@@ -6,18 +6,18 @@ namespace GenerativeGrammar.Grammar
 
 	public class Parser
 	{
-		private Dictionary<Node, string> Augments { get; set; }
+		private Dictionary<Node, List<string>> Augments { get; set; }
 		private Tree GenerativeTree { get; set; }
 		private Log LevelLog { get; set; }
 
 		private Parser(Log levelLog)
 		{
-			Augments = new Dictionary<Node, string>();
+			Augments = new Dictionary<Node, List<string>>();
 			GenerativeTree = new Tree();
 			LevelLog = levelLog;
 		}
 
-		private IEnumerable<string> ReadGrammarFile(string file)
+		private static IEnumerable<string> ReadGrammarFile(string file)
 		{
 			var lines = File.ReadAllLines(file);
 			return lines;
@@ -29,6 +29,7 @@ namespace GenerativeGrammar.Grammar
 			lines = lines.FindAll(e => !string.IsNullOrEmpty(e.Trim()));
 			foreach (var line in lines)
 			{
+				
 				var trimmedLine = line.Trim();
 				var sides = trimmedLine.Split(":=");
 				
@@ -36,16 +37,50 @@ namespace GenerativeGrammar.Grammar
 				{
 					var node = HandleNodeLine(sides);
 					previousNode = node;
-				} else
+					if (lines.IndexOf(line) != 0) continue;
+					var generativeTree = GenerativeTree;
+					generativeTree.Root = node;
+					GenerativeTree = generativeTree;
+				} 
+				else
 				{
-					
-					Augments[previousNode] = trimmedLine;
+					if (!Augments.ContainsKey(previousNode)) Augments.Add(previousNode, new List<string>());
+					Augments[previousNode].Add(trimmedLine);
 				}
 			}
-			
 			HandleAugments();
+			SetLeafNodes();
 			
 			return GenerativeTree;
+		}
+
+		private void SetLeafNodes()
+		{
+			var leafNodes = new List<Node>();
+			foreach (var node in GenerativeTree.Nodes)
+			{
+				var isLeaf = true;
+				foreach (var neighbour in node.PossibleNeighbours)
+				{
+					var possibleNeighbours = neighbour.Split(" ~ ", 2);
+					foreach (var n in possibleNeighbours)
+					{
+						dynamic nodeValue = n.Split(" : ", 2)[0].Trim().Split("] ");
+						nodeValue = nodeValue.Length == 2 ? nodeValue[1] : nodeValue[0];
+						if (GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(nodeValue.Trim())) >= 0) 
+							isLeaf = false;
+					}
+				}
+
+				var leafNode = node;
+				leafNode.IsLeafNode = isLeaf;
+				leafNodes.Add(leafNode);
+			}
+
+			foreach (var node in leafNodes)
+			{
+				GenerativeTree.Nodes[GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(node.Name))] = node;
+			}
 		}
 
 		private Node HandleNodeLine(IReadOnlyList<string> sides)
@@ -84,25 +119,30 @@ namespace GenerativeGrammar.Grammar
 		{
 			foreach (var key in Augments.Keys)
 			{
-				var augment = Augments[key].Split(":", 2);
-				switch (augment[0])
+				var augments = Augments[key];
+				foreach (var augment in augments.Select(augment => augment.Split(":", 2)))
 				{
-					case "global":
-						HandleGlobalVariables(augment[1]);
-						break;
-					case "from":
-						HandleSourceFile(key, augment[1]);
-						break;
-					case "condition":
-						HandleConditions(key, augment[1]);
-						break;
+					switch (augment[0])
+					{
+						case "global":
+							HandleGlobalVariables(augment[1]);
+							break;
+						case "from":
+							HandleSourceFile(key.Name, augment[1]);
+							break;
+						case "condition":
+							HandleConditions(key.Name, augment[1]);
+							break;
 						
+					}
 				}
 			}
 		}
 
-		private void HandleConditions(Node node, string s)
+		private void HandleConditions(string nodeName, string s)
 		{
+			// Why this works?
+			var node = GenerativeTree.Nodes.Find(e => e.Name.Equals(nodeName));
 			var conditions = s.Trim().Split(" | ");
 			foreach (var condition in conditions)
 			{
@@ -110,9 +150,15 @@ namespace GenerativeGrammar.Grammar
 			}
 		}
 
-		private void HandleSourceFile(Node node, string s)
+		private void HandleSourceFile(string nodeName, string s)
 		{
+			// var node = GenerativeTree.Nodes.Find(e => e.Name.Equals(nodeName));
+			// node.Source = s.Trim();
+			// And this doesn't?
+			var index = GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(nodeName));
+			var node = GenerativeTree.Nodes[index];
 			node.Source = s.Trim();
+			GenerativeTree.Nodes[index] = node;
 		}
 
 		private void HandleGlobalVariables(string s)
@@ -142,28 +188,17 @@ namespace GenerativeGrammar.Grammar
 
 		private static void Main()
 		{
-			// Parser parser = new(new Log());
-			// var lines = parser.ReadGrammarFile(
-			// 	Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
-			// var tree = parser.HandleLines(lines.ToList());
-			//
-			// var generator = new Generator(tree, parser.LevelLog);
-			// generator.GenerateFromTree(tree.Nodes[0]);
-			// var levelLog = new Log();
-			// levelLog.PlayerTypes.Add("Bug");
-			// levelLog.PlayerTypes.Add("Dark");
-			// levelLog.PlayerTypes.Add("Dragon");
-			// var generator = new Generator(new Tree(), levelLog);
-			// const string condition = "(\"Dragon\" IN LOGS.PlayerTypes OR \"Dark\" NOT IN LOGS.PlayerTypes) => " +
-			//                          "\"Water\" IN LOGS.PlayerTypes";
-			// Console.WriteLine(generator.HandleCondition(condition));
-
-			for (var i = 1; i <= 100; i++)
-			{
-				var index = Generator.PickIndexFromWeightedList(new List<int> {-10, 0, 1, 1, 1});
-				Console.WriteLine(index);
-			}
-
+			var levelLog = new Log();
+			levelLog.PlayerTypes.Add("Bug");
+			levelLog.PlayerTypes.Add("Dark");
+			levelLog.PlayerTypes.Add("Dragon");
+			Parser parser = new(levelLog);
+			var lines = ReadGrammarFile(
+				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
+			var tree = parser.HandleLines(lines.ToList());
+			
+			var generator = new Generator(tree, parser.LevelLog);
+			generator.GenerateFromTree(tree.Nodes[0]);
 		}
 	}
 }

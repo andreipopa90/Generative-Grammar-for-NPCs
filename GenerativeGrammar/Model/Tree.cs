@@ -5,13 +5,13 @@ namespace GenerativeGrammar.Grammar;
 
 public struct Tree
 {
-    public string Name { get; set; }
+    public Node Root { get; set; }
     public List<Node> Nodes { get; set; }
     public Dictionary<string, int> GlobalVariables { get; set; }
 
     public Tree()
     {
-        Name = "";
+        Root = new Node();
         Nodes = new List<Node>();
         GlobalVariables = new Dictionary<string, int>();
     }

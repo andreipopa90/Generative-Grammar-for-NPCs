@@ -21,7 +21,7 @@ public class JSONReader
 	public List<BaseStat> ReadBaseStatsJSON()
 	{
 		List<BaseStat> BaseStats;
-		StreamReader reader = new(Path.Combine(PathRoot, "pokedex.json"));
+		StreamReader reader = new(Path.Combine(PathRoot, "basestats.json"));
 		string json = reader.ReadToEnd();
 		BaseStats = JsonConvert.DeserializeObject<List<BaseStat>>(json);
 		reader.Close();

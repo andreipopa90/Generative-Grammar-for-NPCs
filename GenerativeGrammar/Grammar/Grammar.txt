@@ -1,18 +1,18 @@
-NPCS(LOGS)  := NPC ~ NPC ~ NPC
+NPCS(LOGS)  := NPC
             global: DomainAffix <- 1 | LinkAffix <- 1 | Weakness <- 1 | LOGS.HasAilments ? Ailment <- 2 : Ailment <- 1 | Heal <- 0
 
-NPC         := TYPES : SIZE(TYPES) <- 0, W <- 1 ~ STATS ~ MOVES ~ AFFIXES : SIZE(AFFIXES) <- 0
+NPC         := TYPES : SIZE(TYPES) <- 0, WT <- 1 ~ STATS ~ MOVES ~ AFFIXES : SIZE(AFFIXES) <- 0, WA <- 1
 
-TYPES       := [W] TYPE ~ TYPES : TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1, SIZE(TYPES) += 1, W -= 1 | [1] TYPE : SIZE(TYPES) += 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1
-            condition: SIZE(TYPES) <= 2 | SIZE(TYPES) = 2 => TYPES[0] != TYPES[1]
+TYPES       := [WT] TYPE ~ TYPES : TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1, SIZE(TYPES) += 1, WT -= 1 | [1] TYPE : SIZE(TYPES) += 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1
+            condition: SIZE(TYPES) = 2 => TYPES[0] != TYPES[1]
 
 TYPE        := [1] "Bug" | [1] "Dark" | [1] "Dragon" | [1] "Electric" | [1] "Fairy" | [1] "Fighting" | [1] "Fire" | [1] "Flying" | [1] "Ghost" | [1] "Grass" | [1] "Ground" | [1] "Ice" | [1] "Normal" | [1] "Poison" | [1] "Psychic" | [1] "Rock" | [1] "Steel" | [1] "Water"
-            from: types.json
+            from: typechart.json
 
 STATS       := BASE ~ NATURE ~ EVS
 
 BASE        := HP ~ ATK ~ DEF ~ SPA ~ SPD ~ SPE
-            from: baseStats.json
+            from: basestats.json
             condition: LOGS.PlayerDefense = "Special" => ATK >= 70 | LOGS.PlayerDefense = "Physical" => SPA >= 70 | LOGS.PlayerAttack = "Special" => SPD >= 70 | LOGS.PlayerAttack = "Physical" => DEF >= 70
 
 NATURE      := NAME ~ PLUS ~ MINUS
@@ -51,7 +51,7 @@ POWER       := [1..200]
 NAME        := [0-9]*[A-Z][a-z]+
 BONUS       := [1] "Heal" : Heal += 1 | [1] "Burn" | [1] "Paralysis" | [1] "Poison"
 
-AFFIXES     := [LOGS.level + 1] AFFIX : SIZE(AFFIXES) += 1 | [LOGS.level] AFFIXES ~ AFFIX : SIZE(AFFIXES) += 1 | [1] "NoAffixes"
-            condition: SIZE(AFFIXES) <= 2 | SIZE(AFFIXES) = 2 => AFFIXES[0] != AFFIXES[1]
+AFFIXES     := [1] AFFIX : SIZE(AFFIXES) += 1 | [WA] AFFIXES ~ AFFIX : SIZE(AFFIXES) += 1, WA -= 1 | [1] "NoAffixes"
+            condition: SIZE(AFFIXES) = 2 => AFFIXES[0] != AFFIXES[1]
     
 AFFIX       := [LinkAffix] "HealthLink" : LinkAffix > 1 ? LinkAffix <- 1 : LinkAffix += 2 | [DomainAffix] "Domain" : DomainAffix -= 1 | [Heal] "Medic" : Heal -= 1 | [1] "Avenger" | [1] "Evolve" | [1] "Sturdy" | [1] "Lifesteal"| [1] "CounterAttack" | [Weakness] "ReverseWeakness" : Weakness > 1 ? Weakness -= 1 | [Ailment] "ReverseAilment" : Ailment > 1 ? Ailment -= 1
