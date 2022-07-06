@@ -1,19 +1,20 @@
 using System.Text;
-using GenerativeGrammar.Model;
 
-namespace GenerativeGrammar.Grammar;
+namespace GenerativeGrammar.Model;
 
-public struct Tree
+public class Tree
 {
     public Node Root { get; set; }
     public List<Node> Nodes { get; set; }
     public Dictionary<string, int> GlobalVariables { get; set; }
+    public List<string> Parameters { get; set; }
 
     public Tree()
     {
         Root = new Node();
         Nodes = new List<Node>();
         GlobalVariables = new Dictionary<string, int>();
+        Parameters = new List<string>();
     }
 
     public override string ToString()

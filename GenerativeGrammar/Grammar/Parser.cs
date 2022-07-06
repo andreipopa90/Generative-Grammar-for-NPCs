@@ -1,5 +1,6 @@
 ﻿using GenerativeGrammar.Model;
 using GenerativeGrammar.NPC;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
 
 namespace GenerativeGrammar.Grammar
 {
@@ -25,7 +26,7 @@ namespace GenerativeGrammar.Grammar
 
 		private Tree HandleLines(List<string> lines)
 		{
-			Node previousNode = default;
+			Node previousNode = default!;
 			lines = lines.FindAll(e => !string.IsNullOrEmpty(e.Trim()));
 			foreach (var line in lines)
 			{
@@ -72,14 +73,8 @@ namespace GenerativeGrammar.Grammar
 					}
 				}
 
-				var leafNode = node;
-				leafNode.IsLeafNode = isLeaf;
-				leafNodes.Add(leafNode);
-			}
-
-			foreach (var node in leafNodes)
-			{
-				GenerativeTree.Nodes[GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(node.Name))] = node;
+				node.IsLeafNode = isLeaf;
+				leafNodes.Add(node);
 			}
 		}
 
@@ -102,7 +97,7 @@ namespace GenerativeGrammar.Grammar
 			var node = new Node();
 			if (parts.Length == 2)
 			{
-				node.Variables = parts[1].Trim().Replace(")", "").Split(", ").ToList();
+				GenerativeTree.Parameters.AddRange(parts[1].Trim().Replace(")", "").Split(", ").ToList());
 				
 			}
 			node.Name = parts[0].Trim();
@@ -141,20 +136,16 @@ namespace GenerativeGrammar.Grammar
 
 		private void HandleConditions(string nodeName, string s)
 		{
-			// Why this works?
 			var node = GenerativeTree.Nodes.Find(e => e.Name.Equals(nodeName));
 			var conditions = s.Trim().Split(" | ");
 			foreach (var condition in conditions)
 			{
-				node.Conditions.Add(condition.Trim());
+				node?.Conditions.Add(condition.Trim());
 			}
 		}
 
 		private void HandleSourceFile(string nodeName, string s)
 		{
-			// var node = GenerativeTree.Nodes.Find(e => e.Name.Equals(nodeName));
-			// node.Source = s.Trim();
-			// And this doesn't?
 			var index = GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(nodeName));
 			var node = GenerativeTree.Nodes[index];
 			node.Source = s.Trim();
@@ -176,14 +167,12 @@ namespace GenerativeGrammar.Grammar
 		private string HandleNeighbourCondition(string rightSide)
 		{
 			var sides = rightSide.Split(" ? ");
-			if (sides.Length == 2)
-			{
-				var condition = sides[0].Trim();
-				var trueCondition = sides[1].Split(" : ")[0].Trim();
-				var falseCondition = sides[1].Split(" : ")[1].Trim();
-				return falseCondition;
-			}
-			return rightSide;
+			if (sides.Length != 2) return rightSide;
+			
+			var condition = sides[0].Trim();
+			var trueCondition = sides[1].Split(" : ")[0].Trim();
+			var falseCondition = sides[1].Split(" : ")[1].Trim();
+			return falseCondition;
 		}
 
 		private static void Main()
@@ -196,9 +185,8 @@ namespace GenerativeGrammar.Grammar
 			var lines = ReadGrammarFile(
 				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
 			var tree = parser.HandleLines(lines.ToList());
-			
 			var generator = new Generator(tree, parser.LevelLog);
-			generator.GenerateFromTree(tree.Nodes[0]);
+			generator.StartGeneration();
 		}
 	}
 }

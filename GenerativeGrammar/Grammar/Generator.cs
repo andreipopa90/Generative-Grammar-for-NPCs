@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Data;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using GenerativeGrammar.Exceptions;
@@ -21,7 +23,9 @@ public class Generator
         { "AND", "&&" },
         { "=", "==" },
         { "NOT", "!" },
-        { "=>", "=>" }
+        { "=>", "=>" },
+        { "+=", "+"},
+        { "-=", "-"}
     };
 
     private readonly string[] _mathSymbols = {"+", "-", "/", "*", "<=", ">="};
@@ -34,15 +38,30 @@ public class Generator
         Reader = new JSONReader();
     }
 
-    public void GenerateFromTree(Node node)
+    public void StartGeneration()
     {
-        if (!node.ActualNeighbours.Any())
+        var root = GenerativeTree.Root;
+        GenerateFromNode(root);
+    }
+
+    /**
+     * <summary>
+     * There are 4 types of node:
+     * - Those that have to pick the neighbours
+     * - Those that already have neighbours
+     * - Leaf nodes
+     * - Nodes that use a source
+     * </summary>
+     */
+    private void GenerateFromNode(Node node)
+    {
+        if (node.ActualNeighbours.Count == 0 && string.IsNullOrEmpty(node.Source))
         {
             DetermineActualNeighbours(node);
         }
         else if (!string.IsNullOrEmpty(node.Source))
         {
-            HandleNodeFromSource(node);
+            HandleNodeWithSource(node);
         }
         else if (node.IsLeafNode)
         {
@@ -68,39 +87,37 @@ public class Generator
             value = GetWeightedTerminalNode(node);
         }
         
-        if (Npcs[^1].ValuesOfNodes.ContainsKey(node.Name)) Npcs[^1].ValuesOfNodes[node.Name].Add(value);
-        else
-        {
-            Npcs[^1].ValuesOfNodes[node.Name] = new List<string> { value };
-        }
+        if (!Npcs[^1].ValuesOfNodes.ContainsKey(node.Name)) Npcs[^1].ValuesOfNodes.Add(node.Name, new List<dynamic>());
+        Npcs[^1].ValuesOfNodes[node.Name].Add(value.ToString());
     }
 
     private void HandleNodeWithNeighbours(Node node)
     {
-        if (GenerativeTree.Root.Name.Equals(node.Name))
+        HandleNpcCreation(node);
+        foreach (var sides in node.ActualNeighbours.Select(neighbour => neighbour.Split(" : ", 2)))
         {
-            var npc = new Model.NPC();
-            Npcs.Add(npc);
-        }
-        foreach (var neighbour in node.ActualNeighbours)
-        {
-            var sides = neighbour.Split(" : ", 2);
             if (sides.Length == 2)
             {
-                var attributes = sides[1].Split(", ");
-                foreach (var attribute in attributes)
-                {
-                    HandleAttribute(attribute.Trim());
-                }
-                
+                SetAttributesFromNode(sides);
             }
             var nextNode = GenerativeTree.Nodes.Find(e => e.Name.Equals(sides[0].Trim()));
-            if (nextNode.Equals(default)) continue;
-            GenerateFromTree(nextNode);
+            if (!Npcs[^1].ValuesOfNodes.ContainsKey(node.Name)) Npcs[^1].ValuesOfNodes.Add(node.Name, new List<dynamic>());
+            if (nextNode is null)
+            {
+                Npcs[^1].ValuesOfNodes[node.Name].Add(sides[0]);
+                continue;
+            }
+            
+            
+            if (!Npcs[^1].ValuesOfNodes.ContainsKey(nextNode.Name))
+            {
+                Npcs[^1].ValuesOfNodes[node.Name].Add(nextNode.Name);
+            }
+            GenerateFromNode(nextNode);
         }
     }
-
-    private void HandleNodeFromSource(Node node)
+    
+    private void HandleNodeWithSource(Node node)
     {
         var reader = new JSONReader();
         var file = node.Source.Split(".")[0].Trim();
@@ -118,10 +135,10 @@ public class Generator
         }
         else
         {
-            Npcs[^1].ValuesOfNodes[node.Name] = new List<string> { valueOfNode.ToString() ?? string.Empty };
+            Npcs[^1].ValuesOfNodes[node.Name] = new List<dynamic> { valueOfNode.ToString() ?? string.Empty };
         }
     }
-
+    
     private void DetermineActualNeighbours(Node node)
     {
         var nextNode = GetWeightedTerminalNode(node);
@@ -134,14 +151,31 @@ public class Generator
                 HandleAttribute(attribute);
             }
         }
-        var neighbours = sides[0].Trim();
-        var conditionResult = node.Conditions.Aggregate(true, (current, condition) => current && HandleCondition(condition));
+        var neighbours = sides[0].Trim().Split(" ~ ");
+        // var conditionResult = node.Conditions.Aggregate(true, (current, condition) => current && HandleCondition(condition));
         foreach (var neighbour in neighbours)
         {
             var next = GenerativeTree.Nodes.Find(e => e.Name.Equals(neighbour));
-            if (next.Equals(default)) continue;
-            GenerateFromTree(next);
+            if (next is null) continue;
+            GenerateFromNode(next);
         }
+    }
+
+    private void SetAttributesFromNode(IReadOnlyList<string> sides)
+    {
+        var attributes = sides[1].Split(", ");
+        foreach (var attribute in attributes)
+        {
+            HandleAttribute(attribute.Trim());
+        }
+    }
+
+    private void HandleNpcCreation(Node node)
+    {
+        if (!GenerativeTree.Root.Name.Equals(node.Name)) return;
+        
+        var npc = new Model.NPC();
+        Npcs.Add(npc);
     }
 
     private void HandleAttribute(string attribute)
@@ -154,6 +188,7 @@ public class Generator
         if (string.IsNullOrEmpty(attribute)) return;
         var sides = attribute.Split(" ");
         if (HandleVariable(sides[0]) == null) Npcs[^1].Attributes.Add(sides[0], 0);
+        
         if (attribute.Contains("<-"))
         {
             Npcs[^1].Attributes[sides[0]] = EvaluateEquation(string.Join(" ", sides.Skip(2)));
@@ -207,20 +242,21 @@ public class Generator
         foreach (var part in parts)
         {
             if (_mathSymbols.Contains(part)) sb.Append(part);
+            else if (_operands.ContainsKey(part)) sb.Append(_operands[part]);
             else sb.Append(HandleVariable(part));
         }
         return CSharpScript.EvaluateAsync<int>(sb.ToString()).Result;
     }
 
-    private string GetWeightedTerminalNode(Node typeNode)
+    private string GetWeightedTerminalNode(Node node)
     {
         var weightedTypesList = new Dictionary<string, int>();
-        foreach (var sides in typeNode.PossibleNeighbours.Select(value => value.Trim().Replace("[", "").Split("] ")))
+        foreach (var sides in node.PossibleNeighbours.Select(value => value.Trim().Replace("[", "").Split("] ")))
         {
             int weight;
             try
             {
-                weight = int.Parse(sides[0].Trim());
+                weight = int.Parse(HandleVariable(sides[0].Trim()).ToString() ?? string.Empty);
             }
             catch (FormatException)
             {
@@ -282,7 +318,6 @@ public class Generator
             else if (_mathSymbols.Contains(token)) result.Add(token);
             else
             {
-                Console.WriteLine(token);
                 var variable = HandleVariable(token);
                 var brackets = HandleConditionBrackets(token);
                 
@@ -291,10 +326,15 @@ public class Generator
         }
 
         condition = HandleImply(string.Join(" ", result)).ToLower();
-        Console.WriteLine(condition);
         return CSharpScript.EvaluateAsync<bool>(condition).Result;
     }
 
+    /**
+     * <summary>
+     * Change expressions that use imply, like A => B, to !(A) || (B), where A and B are boolean expressions
+     * Assumption taken: there is only one imply used per boolean expression, so A and B have no imply
+     * </summary>
+     */
     private string HandleImply(string condition)
     {
         //Assume there is only one implication per condition
@@ -307,6 +347,7 @@ public class Generator
         return condition;
     }
 
+    
     private string HandleIn(string condition)
     {
         condition = condition.Trim();
@@ -355,31 +396,94 @@ public class Generator
         dynamic result;
         if (!(token.EndsWith(')') && token.Contains('(') && !token.StartsWith('(')))
             token = token.Replace("(", "").Replace(")", "");
+        else
+        {
+            token = HandleFunction(token);
+        }
         if (token.Contains('['))
         {
             index = int.Parse(token.Replace("]", "").Split("[")[1]);
             token = token.Split("[")[0];
         }
         
+        var tokenStart = token.Split(".")[0].Trim();
+        
         if (token.StartsWith("\"") || int.TryParse(token, out _) || bool.TryParse(token, out _))
         {
             result = token.Replace("\"", "");
         }
 
-        else if (token.StartsWith("LOGS."))
+        else if (GenerativeTree.Parameters.Contains(tokenStart))
         {
             var sides = token.Split(".");
             dynamic field = LevelLog.GetType().GetProperty(sides[1])?.GetValue(LevelLog) ?? throw new InvalidOperationException();
             result = sides.Length == 3 ? field[sides[2]] : field;
         }
         
-        else if (GenerativeTree.GlobalVariables.ContainsKey(token)) result = GenerativeTree.GlobalVariables[token];
-        
-        else if (Npcs[^1].Attributes.ContainsKey(token)) result = Npcs[^1].Attributes[token];
-        else if (Npcs[^1].ValuesOfNodes.ContainsKey(token)) result = Npcs[^1].ValuesOfNodes[token];
+        else if (GenerativeTree.GlobalVariables.ContainsKey(token))
+        {
+            result = GenerativeTree.GlobalVariables[token];
+        }
+        else if (Npcs[^1].Attributes.ContainsKey(token))
+        {
+            result = Npcs[^1].Attributes[token];
+        }
+        else if (Npcs[^1].ValuesOfNodes.ContainsKey(token))
+        {
+            result = GetValueOfNode(token); //Npcs[^1].ValuesOfNodes[token];
+        }
         else return null!;
         
         return index != -1 ? result[index] : result;
+    }
+
+    private object GetValueOfNode(string token)
+    {
+        if (GenerativeTree.Nodes.Find(e => e.Name.Equals(token))!.IsLeafNode) return Npcs[^1].ValuesOfNodes[token]; 
+        return default;
+    }
+
+    private string HandleFunction(string token)
+    {
+        var sides = token.Split('(');
+        var function = sides[0].Trim();
+        dynamic variable = HandleVariable(sides[1].Replace(")", "").Trim());
+
+        if (variable == null) return token;
+        
+        return function switch
+        {
+            "MAX" => variable.Max().ToString(),
+            "MIN" => variable.Min().ToString(),
+            "SIZE" => ((List<object>)variable).Count.ToString(),
+            _ => GetFunctionResult(function, variable)
+        };
+    }
+
+    private string GetFunctionResult(string function, object variable)
+    {
+        var functionSides = function.Split(".", 2);
+        if (functionSides.Length != 2) return "0";
+        
+        var dataType = functionSides[0];
+        var property = functionSides[1];
+        var result = 0;
+        if (dataType.GetType().IsGenericType &&
+            dataType.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>)))
+        {
+            foreach (var data in dataType)
+            {
+                result += ((dynamic) data.GetType().GetProperty(property)!.GetValue(data)!)[variable.ToString()];
+            }
+        }
+        else
+        {
+            dynamic data = variable;
+            result = data.GetType().GetProperty(property).GetValue(data)[variable];
+        }
+
+        Console.WriteLine(result);
+        return "0";
     }
 
     private string[] HandleConditionBrackets(string token)
