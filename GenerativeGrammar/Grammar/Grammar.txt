@@ -1,29 +1,28 @@
 NPCS(LOGS)  := NPC
             global: DomainAffix <- 1 | LinkAffix <- 1 | Weakness <- 1 | LOGS.HasAilments ? Ailment <- 2 : Ailment <- 1 | Heal <- 0
 
-NPC         := TYPES : SIZE(TYPES) <- 0, WT <- 1 ~ STATS ~ MOVES ~ AFFIXES : SIZE(AFFIXES) <- 0, WA <- 1
+NPC         := TYPES : WT <- 1, WBug <- 1, WDark <- 1, WDragon <- 1, WElectric <- 1, WFairy <- 1, WFighting <- 1, WFire <- 1, WFlying <- 1, WGhost <- 1, WGrass <- 1, WGround <- 1, WIce <- 1, WNormal <- 1, WPoison <- 1, WPsychic <- 1, WRock <- 1, WSteel <- 1, WWater <- 1 ~ STATS ~ MOVES ~ AFFIXES : WA <- 1
 
-TYPES       := [WT] TYPE ~ TYPES : TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1, SIZE(TYPES) += 1, WT -= 1 | [1] TYPE : SIZE(TYPES) += 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1
-            condition: SIZE(TYPES) = 2 => TYPES[0] != TYPES[1]
+TYPES       := [WT] TYPE ~ TYPES : WT -= 1 | [1] TYPE
 
-TYPE        := [1] "Bug" | [1] "Dark" | [1] "Dragon" | [1] "Electric" | [1] "Fairy" | [1] "Fighting" | [1] "Fire" | [1] "Flying" | [1] "Ghost" | [1] "Grass" | [1] "Ground" | [1] "Ice" | [1] "Normal" | [1] "Poison" | [1] "Psychic" | [1] "Rock" | [1] "Steel" | [1] "Water"
+TYPE        := [WBug] "Bug" : WBug -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WDark] "Dark" : WDark -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WDragon] "Dragon" : WDragon -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WElectric] "Electric" : WElectric -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WFairy] "Fairy" : WFairy -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WFighting] "Fighting" : WFighting -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WFire] "Fire" : WFire -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WFlying] "Flying" : WFlying -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WGhost] "Ghost" : WGhost -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WGrass] "Grass" : WGrass -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WGround] "Ground" : WGround -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WIce] "Ice" : WIce -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WNormal] "Normal" : WNormal -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WPoison] "Poison" : WPoison -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WPsychic] "Psychic" : WPsychic -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WRock] "Rock" : WRock -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WSteel] "Steel" : WSteel -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1 | [WWater] "Water" : WWater -= 1, TYPE.DamageTaken(LOGS.PlayerTypes) = 1 ? Weakness += 1
             from: typechart.json
 
 STATS       := BASE ~ NATURE ~ EVS
 
 BASE        := HP ~ ATK ~ DEF ~ SPA ~ SPD ~ SPE
             from: basestats.json
-            condition: LOGS.PlayerDefense = "Special" => ATK >= 70 | LOGS.PlayerDefense = "Physical" => SPA >= 70 | LOGS.PlayerAttack = "Special" => SPD >= 70 | LOGS.PlayerAttack = "Physical" => DEF >= 70
+            condition: LOGS.PlayerDefense = "Special" => ATK >= SPA | LOGS.PlayerDefense = "Physical" => SPA >= ATK | LOGS.PlayerAttack = "Special" => SPD >= DEF | LOGS.PlayerAttack = "Physical" => DEF >= SPA
 
 NATURE      := NAME ~ PLUS ~ MINUS
             from: natures.json
 
-PLUS        := [BASE.ATK] "atk" | [BASE.DEF] "def" | [BASE.SPA] "spa" | [BASE.SPD] "spd" | [BASE.SPE] "spe"
+PLUS        := [ATK] "atk" | [DEF] "def" | [SPA] "spa" | [SPD] "spd" | [SPE] "spe"
 
-MINUS       := [1] "Atk" | [1] "Def" | [1] "Spa" | [1] "Spd" | [1] "Spe"
+MINUS       := [1] "atk" | [1] "def" | [1] "spa" | [1] "spd" | [1] "spe"
 
 EVS         := HPEV ~ ATKEV ~ DEFEV ~ SPAEV ~ SPDEV ~ SPEEV
-            condition: HPEV + ATKEV + DEFEV + SPAEV + SPDEV + SPEEV <= 127.5 
+            condition: 4 * HPEV + 4 * ATKEV + 4 * DEFEV + 4 * SPAEV + 4 * SPDEV + 4 * SPEEV <= 510
 
 HPEV        := [0..63]
 ATKEV       := [0..63]
@@ -40,18 +39,20 @@ SPE         := [MIN(LOGS.EnemyStats.SPE) + 1..195]
 
 MOVES       := MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE
 
-MOVE        := NAME ~ POWER ~ ACCURACY ~ CATEGORY ~ TYPE ~ TARGET ~ BONUS*
+MOVE        := NAME ~ POWER ~ ACCURACY ~ CATEGORY ~ MOVETYPE ~ TARGET
             from: moves.json
-            condition: TYPE IN TYPES OR TARGET = "self" OR CATEGORY = "Status"
+            condition: MOVETYPE IN TYPES OR TARGET = "self" OR CATEGORY = "Status" | DISTINCT(MOVES)
 
-CATEGORY    := [LOGS.PlayerSPD] "Special" | [MIN(LOGS.PlayerSPD, LOGS.PlayerDEF] "Status" | [LOGS.PlayerDEF] "Physical"
+CATEGORY    := [LOGS.PlayerSPD] "Special" | [MIN(LOGS.PlayerSPD, LOGS.PlayerDEF)] "Status" | [LOGS.PlayerDEF] "Physical"
 TARGET      := [1] "self" | [1] "normal"
 ACCURACY    := [1..100]
 POWER       := [1..200]
 NAME        := [0-9]*[A-Z][a-z]+
 BONUS       := [1] "Heal" : Heal += 1 | [1] "Burn" | [1] "Paralysis" | [1] "Poison"
+MOVETYPE    := [1] "Bug" | [1] "Dark" | [1] "Dragon" | [1] "Electric" | [1] "Fairy" | [1] "Fighting" | [1] "Fire" | [1] "Flying" | [1] "Ghost" | [1] "Grass" | [1] "Ground" | [1] "Ice" | [1] "Normal" | [1] "Poison" | [1] "Psychic" | [1] "Rock" | [1] "Steel" | [1] "Water"
 
-AFFIXES     := [1] AFFIX : SIZE(AFFIXES) += 1 | [WA] AFFIXES ~ AFFIX : SIZE(AFFIXES) += 1, WA -= 1 | [1] "NoAffixes"
-            condition: SIZE(AFFIXES) = 2 => AFFIXES[0] != AFFIXES[1]
+
+AFFIXES     := [1] AFFIX | [WA] AFFIX ~ AFFIXES : WA -= 1 | [1] "NoAffixes"
     
 AFFIX       := [LinkAffix] "HealthLink" : LinkAffix > 1 ? LinkAffix <- 1 : LinkAffix += 2 | [DomainAffix] "Domain" : DomainAffix -= 1 | [Heal] "Medic" : Heal -= 1 | [1] "Avenger" | [1] "Evolve" | [1] "Sturdy" | [1] "Lifesteal"| [1] "CounterAttack" | [Weakness] "ReverseWeakness" : Weakness > 1 ? Weakness -= 1 | [Ailment] "ReverseAilment" : Ailment > 1 ? Ailment -= 1
+            condition: DISTINCT(AFFIXES)

@@ -5,9 +5,9 @@ namespace GenerativeGrammar.Model;
 public class Tree
 {
     public Node Root { get; set; }
-    public List<Node> Nodes { get; set; }
-    public Dictionary<string, int> GlobalVariables { get; set; }
-    public List<string> Parameters { get; set; }
+    public List<Node> Nodes { get; }
+    public Dictionary<string, int> GlobalVariables { get; }
+    public List<string> Parameters { get; }
 
     public Tree()
     {

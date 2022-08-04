@@ -1,30 +1,28 @@
 ﻿using GenerativeGrammar.Model;
-using GenerativeGrammar.NPC;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
 
 namespace GenerativeGrammar.Grammar
 {
 
 	public class Parser
 	{
-		private Dictionary<Node, List<string>> Augments { get; set; }
+		private Dictionary<Node, List<string>> Augments { get; }
 		private Tree GenerativeTree { get; set; }
-		private Log LevelLog { get; set; }
+		public Log LevelLog { get; }
 
-		private Parser(Log levelLog)
+		public Parser(Log levelLog)
 		{
 			Augments = new Dictionary<Node, List<string>>();
 			GenerativeTree = new Tree();
 			LevelLog = levelLog;
 		}
 
-		private static IEnumerable<string> ReadGrammarFile(string file)
+		public IEnumerable<string> ReadGrammarFile(string file)
 		{
 			var lines = File.ReadAllLines(file);
 			return lines;
 		}
 
-		private Tree HandleLines(List<string> lines)
+		public Tree HandleLines(List<string> lines)
 		{
 			Node previousNode = default!;
 			lines = lines.FindAll(e => !string.IsNullOrEmpty(e.Trim()));
@@ -39,42 +37,47 @@ namespace GenerativeGrammar.Grammar
 					var node = HandleNodeLine(sides);
 					previousNode = node;
 					if (lines.IndexOf(line) != 0) continue;
-					var generativeTree = GenerativeTree;
-					generativeTree.Root = node;
-					GenerativeTree = generativeTree;
+					GenerativeTree.Root = node;
 				} 
 				else
 				{
-					if (!Augments.ContainsKey(previousNode)) Augments.Add(previousNode, new List<string>());
-					Augments[previousNode].Add(trimmedLine);
+					AddAugmentsToNode(previousNode, trimmedLine);
 				}
 			}
 			HandleAugments();
-			SetLeafNodes();
+			SetTerminalNodes();
 			
 			return GenerativeTree;
 		}
 
-		private void SetLeafNodes()
+		private void AddAugmentsToNode(Node previousNode, string trimmedLine)
 		{
-			var leafNodes = new List<Node>();
+			if (!Augments.ContainsKey(previousNode)) Augments.Add(previousNode, new List<string>());
+			Augments[previousNode].Add(trimmedLine);
+		}
+
+		private void SetTerminalNodes()
+		{
 			foreach (var node in GenerativeTree.Nodes)
 			{
-				var isLeaf = true;
-				foreach (var neighbour in node.PossibleNeighbours)
-				{
-					var possibleNeighbours = neighbour.Split(" ~ ", 2);
-					foreach (var n in possibleNeighbours)
-					{
-						dynamic nodeValue = n.Split(" : ", 2)[0].Trim().Split("] ");
-						nodeValue = nodeValue.Length == 2 ? nodeValue[1] : nodeValue[0];
-						if (GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(nodeValue.Trim())) >= 0) 
-							isLeaf = false;
-					}
-				}
+				var isTerminal = true;
 
-				node.IsLeafNode = isLeaf;
-				leafNodes.Add(node);
+				var possibleNeighboursList = 
+					from neighbour in node.PossibleNeighbours 
+					select neighbour.Split(" ~ ") into possibleNeighbours 
+					from n in possibleNeighbours 
+					select n.Split(" : ", 2)[0].Trim().Split("] ");
+				
+				foreach (var n in possibleNeighboursList)
+				{
+					dynamic nodeValue = n;
+					nodeValue = nodeValue.Length == 2 ? nodeValue[1] : nodeValue[0];
+					if (GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(nodeValue.Trim())) >= 0) 
+						isTerminal = false;
+				}
+				
+
+				node.IsTerminalNode = isTerminal;
 			}
 		}
 
@@ -175,18 +178,6 @@ namespace GenerativeGrammar.Grammar
 			return falseCondition;
 		}
 
-		private static void Main()
-		{
-			var levelLog = new Log();
-			levelLog.PlayerTypes.Add("Bug");
-			levelLog.PlayerTypes.Add("Dark");
-			levelLog.PlayerTypes.Add("Dragon");
-			Parser parser = new(levelLog);
-			var lines = ReadGrammarFile(
-				Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
-			var tree = parser.HandleLines(lines.ToList());
-			var generator = new Generator(tree, parser.LevelLog);
-			generator.StartGeneration();
-		}
+		
 	}
 }

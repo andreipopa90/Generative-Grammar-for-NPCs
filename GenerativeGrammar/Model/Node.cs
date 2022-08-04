@@ -9,7 +9,7 @@ public class Node
     public List<string> ActualNeighbours { get; set; }
     public List<string> Conditions { get; set; }
     public string Source { get; set; }
-    public bool IsLeafNode { get; set; }
+    public bool IsTerminalNode { get; set; }
 
     public Node()
     {
@@ -18,7 +18,7 @@ public class Node
         ActualNeighbours = new List<string>();
         Conditions = new List<string>();
         Source = string.Empty;
-        IsLeafNode = false;
+        IsTerminalNode = false;
     }
 
     public override string ToString()

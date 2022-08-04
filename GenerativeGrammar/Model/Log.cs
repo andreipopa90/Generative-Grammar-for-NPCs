@@ -1,4 +1,4 @@
-namespace GenerativeGrammar.NPC;
+namespace GenerativeGrammar.Model;
 
 public class Log
 {
@@ -7,6 +7,8 @@ public class Log
     public List<string> PlayerTypes { get; set; }
     public string PlayerDefense { get; set; }
     public string PlayerAttack { get; set; }
+    public int PlayerSPD { get; set; }
+    public int PlayerDEF { get; set; }
 
     public Log()
     {
@@ -18,8 +20,10 @@ public class Log
         EnemyStats.Add("SPD", new List<int>{1});
         EnemyStats.Add("SPE", new List<int>{1});
         HasAilments = false;
-        PlayerTypes = new List<string>();
-        PlayerDefense = "";
-        PlayerAttack = "";
+        PlayerTypes = new List<string> {"Bug"};
+        PlayerDefense = "Special";
+        PlayerAttack = "Special";
+        PlayerSPD = 100;
+        PlayerDEF = 10;
     }
 }
