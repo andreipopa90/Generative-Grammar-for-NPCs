@@ -9,7 +9,7 @@ public class Generator
     public List<Npc> Npcs { get; }
     private Tree GenerativeTree { get; }
     private Log LevelLog { get; }
-    private ExpressionHandler Handler { get; }
+    private ExpressionHandler? Handler { get; }
     private WeightedListPicker Picker { get; }
 
     public Generator(Tree generativeTree, Log levelLog)
@@ -17,7 +17,10 @@ public class Generator
         GenerativeTree = generativeTree;
         Npcs = new List<Npc>();
         LevelLog = levelLog;
-        Handler = new ExpressionHandler(LevelLog, GenerativeTree, Npcs);
+        Handler = ExpressionHandler.GetInstance();
+        Handler.Npcs = Npcs;
+        Handler.GenerativeTree = GenerativeTree;
+        Handler.LevelLog = LevelLog;
         Picker = new WeightedListPicker(Handler);
     }
 

@@ -1,12 +1,18 @@
-﻿using GenerativeGrammar.Model;
+﻿using GenerativeGrammar.Handlers;
+using GenerativeGrammar.Model;
 
 namespace GenerativeGrammar.Grammar
 {
 
+	/**
+	 * <summary>
+	 * The <code>Parser</code> class takes care of reading the grammar from a file and creating a tree.
+	 * </summary>
+	 */
 	public class Parser
 	{
 		private Dictionary<Node, List<string>> Augments { get; }
-		private Tree GenerativeTree { get; set; }
+		private Tree GenerativeTree { get; }
 		public Log LevelLog { get; }
 
 		public Parser(Log levelLog)
@@ -169,13 +175,17 @@ namespace GenerativeGrammar.Grammar
 
 		private string HandleNeighbourCondition(string rightSide)
 		{
+			var handler = ExpressionHandler.GetInstance();
+			handler.GenerativeTree = GenerativeTree;
+			handler.LevelLog = LevelLog;
 			var sides = rightSide.Split(" ? ");
 			if (sides.Length != 2) return rightSide;
-			
+
 			var condition = sides[0].Trim();
+			var conditionResult = handler.HandleCondition(condition);
 			var trueCondition = sides[1].Split(" : ")[0].Trim();
 			var falseCondition = sides[1].Split(" : ")[1].Trim();
-			return falseCondition;
+			return conditionResult ? trueCondition : falseCondition;
 		}
 
 		

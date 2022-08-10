@@ -8,9 +8,10 @@ namespace GenerativeGrammar.Handlers;
 
 public class ExpressionHandler
 {
-    private List<Npc> Npcs { get; }
-    private Tree GenerativeTree { get; }
-    private Log LevelLog { get; }
+    public List<Npc> Npcs { get; set; }
+    public Tree GenerativeTree { get; set; }
+    public Log LevelLog { get; set; }
+
     private readonly Dictionary<string, string> _operands = new() {
         { "OR", "||" },
         { "AND", "&&" },
@@ -29,13 +30,24 @@ public class ExpressionHandler
         { "<", "<" },
         { ">", ">"}
     };
-    
 
-    public ExpressionHandler(Log levelLog, Tree generativeTree, List<Npc> npcs)
+    private static ExpressionHandler? Instance { get; set; }
+
+    public static ExpressionHandler GetInstance()
     {
-        LevelLog = levelLog;
-        GenerativeTree = generativeTree;
-        Npcs = npcs;
+        if (Instance == null)
+        {
+            Instance = new ExpressionHandler();
+        }
+
+        return Instance;
+    }
+
+    private ExpressionHandler()
+    {
+        LevelLog = new Log();
+        GenerativeTree = new Tree();
+        Npcs = new List<Npc>();
     }
 
     public void HandleAttribute(string attribute)

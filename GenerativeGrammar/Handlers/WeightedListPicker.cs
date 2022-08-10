@@ -5,8 +5,8 @@ namespace GenerativeGrammar.Handlers;
 public class WeightedListPicker
 {
 
-    private ExpressionHandler Handler;
-    public WeightedListPicker(ExpressionHandler handler)
+    private ExpressionHandler? Handler;
+    public WeightedListPicker(ExpressionHandler? handler)
     {
         Handler = handler;
     }
