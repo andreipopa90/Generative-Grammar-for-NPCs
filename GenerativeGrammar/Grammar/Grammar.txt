@@ -1,4 +1,4 @@
-NPCS(LOGS)  := NPC
+NPCS(LOGS)  := NPC ~ NPC ~ NPC
             global: DomainAffix <- 1 | LinkAffix <- 1 | Weakness <- 1 | LOGS.HasAilments ? Ailment <- 2 : Ailment <- 1 | Heal <- 0
 
 NPC         := TYPES : WT <- 1, WBug <- 1, WDark <- 1, WDragon <- 1, WElectric <- 1, WFairy <- 1, WFighting <- 1, WFire <- 1, WFlying <- 1, WGhost <- 1, WGrass <- 1, WGround <- 1, WIce <- 1, WNormal <- 1, WPoison <- 1, WPsychic <- 1, WRock <- 1, WSteel <- 1, WWater <- 1 ~ STATS ~ MOVES ~ AFFIXES : WA <- 1
@@ -39,11 +39,11 @@ SPE         := [MIN(LOGS.EnemyStats.SPE) + 1..195]
 
 MOVES       := MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE
 
-MOVE        := NAME ~ POWER ~ ACCURACY ~ CATEGORY ~ MOVETYPE ~ TARGET
+MOVE        := NAME ~ POWER ~ ACCURACY ~ CATEGORY ~ MOVETYPE ~ TARGET ~ BONUS
             from: moves.json
             condition: MOVETYPE IN TYPES OR TARGET = "self" OR CATEGORY = "Status" | DISTINCT(MOVES)
 
-CATEGORY    := [LOGS.PlayerSPD] "Special" | [MIN(LOGS.PlayerSPD, LOGS.PlayerDEF)] "Status" | [LOGS.PlayerDEF] "Physical"
+CATEGORY    := [LOGS.PlayerDEF] "Special" | [MIN(LOGS.PlayerSPD, LOGS.PlayerDEF)] "Status" | [LOGS.PlayerSPD] "Physical"
 TARGET      := [1] "self" | [1] "normal"
 ACCURACY    := [1..100]
 POWER       := [1..200]
@@ -53,6 +53,6 @@ MOVETYPE    := [1] "Bug" | [1] "Dark" | [1] "Dragon" | [1] "Electric" | [1] "Fai
 
 
 AFFIXES     := [1] AFFIX | [WA] AFFIX ~ AFFIXES : WA -= 1 | [1] "NoAffixes"
+            condition: DISTINCT(AFFIXES)
     
 AFFIX       := [LinkAffix] "HealthLink" : LinkAffix > 1 ? LinkAffix <- 1 : LinkAffix += 2 | [DomainAffix] "Domain" : DomainAffix -= 1 | [Heal] "Medic" : Heal -= 1 | [1] "Avenger" | [1] "Evolve" | [1] "Sturdy" | [1] "Lifesteal"| [1] "CounterAttack" | [Weakness] "ReverseWeakness" : Weakness > 1 ? Weakness -= 1 | [Ailment] "ReverseAilment" : Ailment > 1 ? Ailment -= 1
-            condition: DISTINCT(AFFIXES)
