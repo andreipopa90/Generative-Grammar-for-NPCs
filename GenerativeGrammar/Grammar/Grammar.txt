@@ -39,7 +39,7 @@ SPE         := [MIN(LOGS.EnemyStats.SPE) + 1..195]
 
 MOVES       := MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE
 
-MOVE        := NAME ~ POWER ~ ACCURACY ~ CATEGORY ~ MOVETYPE ~ TARGET ~ BONUS
+MOVE        := NAME ~ POWER ~ ACCURACY ~ CATEGORY ~ MOVETYPE ~ TARGET
             from: moves.json
             condition: MOVETYPE IN TYPES OR TARGET = "self" OR CATEGORY = "Status" | DISTINCT(MOVES)
 
