@@ -31,16 +31,16 @@ public class ExpressionHandler
         { ">", ">"}
     };
 
+    private readonly List<string> _functions = new()
+    {
+        "MIN", "MAX", "SIZE", "DISTINCT", "TYPE.DamageTaken"
+    };
+
     private static ExpressionHandler? Instance { get; set; }
 
     public static ExpressionHandler GetInstance()
     {
-        if (Instance == null)
-        {
-            Instance = new ExpressionHandler();
-        }
-
-        return Instance;
+        return Instance ??= new ExpressionHandler();
     }
 
     private ExpressionHandler()
@@ -97,6 +97,12 @@ public class ExpressionHandler
 
     public int EvaluateEquation(string equation)
     {
+        if (CheckForFunction(equation))
+        {
+            var function = ExtractFunction(equation);
+            var result = HandleFunction(function);
+            equation = equation.Replace(function, result);
+        }
         var sb = new StringBuilder();
         var parts = equation.Trim().Split(" ");
         foreach (var part in parts)
@@ -105,6 +111,31 @@ public class ExpressionHandler
             else sb.Append(HandleVariable(part));
         }
         return CSharpScript.EvaluateAsync<int>(sb.ToString()).Result;
+    }
+
+    private string ExtractFunction(string equation)
+    {
+        var function = _functions.Where(f => equation.IndexOf(f, StringComparison.Ordinal) > -1).ToList()[0];
+        var startIndex = equation.IndexOf(function, StringComparison.Ordinal);
+        var brackets = 1;
+        var index = startIndex + function.Length + 1;
+        while (brackets > 0)
+        {
+            switch (equation[index])
+            {
+                case '(':
+                    brackets += 1;
+                    break;
+                case ')':
+                    brackets -= 1;
+                    break;
+            }
+
+            index += 1;
+        }
+
+        var endIndex = index - 1;
+        return equation.Substring(startIndex, endIndex - startIndex + 1);
     }
 
     public bool HandleCondition(string condition)
@@ -229,7 +260,7 @@ public class ExpressionHandler
     {
         var index = -1;
         dynamic result;
-        token = CheckForFunction(token);
+        token = CheckAndHandleFunction(token);
         
         token = CheckForIndex(token, ref index);
         
@@ -277,16 +308,15 @@ public class ExpressionHandler
         return token;
     }
 
-    private string CheckForFunction(string token)
+    private bool CheckForFunction(string line)
     {
-        if (!(token.EndsWith(')') && token.Contains('(') && !token.StartsWith('(')))
-        {
-            token = token.Replace("(", "").Replace(")", "");
-        }
-        else
-        {
-            token = HandleFunction(token);
-        }
+        return _functions.Any(e => line.Contains(e));
+    }
+    
+    private string CheckAndHandleFunction(string token)
+    {
+        token = _functions.Any(e => token.Contains(e)) ? 
+            HandleFunction(token) : token.Replace("(", "").Replace(")", "");
 
         return token;
     }
@@ -299,7 +329,7 @@ public class ExpressionHandler
         var results = new List<dynamic>();
         foreach (var v in variables) 
         {
-            dynamic variable = HandleVariable(v, returnCompleteList: true)!;
+            dynamic variable = _operands.Keys.Any(o => token.Contains(o)) ? EvaluateEquation(v) : HandleVariable(v, returnCompleteList: true)!;
             if (variable == null) return token;
             if (variable.GetType().IsGenericType &&
                 variable.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>)))

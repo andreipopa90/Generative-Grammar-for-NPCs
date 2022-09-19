@@ -41,7 +41,11 @@ public class Generator
      */
     private void GenerateFromNode(Node node)
     {
-        Console.WriteLine(node.Name);
+        if (node.Name.Equals("HPEV"))
+        {
+            Console.WriteLine(node.Name);
+        }
+
         if (node.IsTerminalNode && string.IsNullOrEmpty(node.Source))
         {
             HandleTerminalNode(node);
@@ -105,7 +109,28 @@ public class Generator
     {
         if (!Npcs[^1].ValuesOfNodes.ContainsKey(node.Name))
             Npcs[^1].ValuesOfNodes.Add(node.Name, new List<dynamic>());
+        else if (node.IsTerminalNode)
+        {
+            Npcs[^1].ValuesOfNodes[node.Name] = new List<dynamic>();
+        }
         Npcs[^1].ValuesOfNodes[node.Name].Add(value.ToString());
+    }
+    
+    private void AddNodeToNpc(Node node, Node? nextNode, string terminalValue)
+    {
+        if (!Npcs[^1].ValuesOfNodes.ContainsKey(node.Name))
+            Npcs[^1].ValuesOfNodes.Add(node.Name, new List<dynamic>());
+        if (nextNode is null)
+        {
+            Npcs[^1].ValuesOfNodes[node.Name].Add(terminalValue);
+            return;
+        }
+
+
+        if (!Npcs[^1].ValuesOfNodes.ContainsKey(nextNode.Name))
+        {
+            Npcs[^1].ValuesOfNodes[node.Name].Add(nextNode.Name);
+        }
     }
 
     private dynamic HandleNodeAttributes(dynamic value)
@@ -140,6 +165,16 @@ public class Generator
                     Npcs[^1].ValuesOfNodes.Where(e => !neighbours.Contains(e.Key))
                         .ToDictionary(e => e.Key, e => e.Value);
             }
+            
+            foreach (var nextNode in neighbours.Select(neighbour => neighbour.Split(" : ", 2)[0]))
+            {
+                var next = GenerativeTree.Nodes.Find(n => n.Name.Equals(nextNode));
+                if (next is null || !next.IsTerminalNode) continue;
+                if (!Npcs[^1].ValuesOfNodes.ContainsKey(next.Name))
+                    Npcs[^1].ValuesOfNodes.Add(next.Name, new List<dynamic>());
+                Npcs[^1].ValuesOfNodes[next.Name].Add(0);
+            }
+            
             foreach (var sides in neighbours.Select(neighbour => neighbour.Split(" : ", 2)))
             {
                 HandleNpcCreation(node);
@@ -156,23 +191,6 @@ public class Generator
 
             trial++;
         } while (!CheckNodeCondition(node));
-    }
-
-    private void AddNodeToNpc(Node node, Node? nextNode, string terminalValue)
-    {
-        if (!Npcs[^1].ValuesOfNodes.ContainsKey(node.Name))
-            Npcs[^1].ValuesOfNodes.Add(node.Name, new List<dynamic>());
-        if (nextNode is null)
-        {
-            Npcs[^1].ValuesOfNodes[node.Name].Add(terminalValue);
-            return;
-        }
-
-
-        if (!Npcs[^1].ValuesOfNodes.ContainsKey(nextNode.Name))
-        {
-            Npcs[^1].ValuesOfNodes[node.Name].Add(nextNode.Name);
-        }
     }
 
     private void HandleSourceNode(Node node)
