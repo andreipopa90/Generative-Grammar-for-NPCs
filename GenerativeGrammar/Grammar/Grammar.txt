@@ -36,7 +36,7 @@ SPA         := [MIN(LOGS.EnemyStats.SPA) + 1..195]
 SPD         := [MIN(LOGS.EnemyStats.SPD) + 1..195]
 SPE         := [MIN(LOGS.EnemyStats.SPE) + 1..195]
 
-MOVES       := MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE ~ MOVE
+MOVES       := MOVE ~ MOVE ~ MOVE ~ MOVE
 
 MOVE        := CATEGORY ~ MOVETYPE ~ TARGET
             from: moves.json
