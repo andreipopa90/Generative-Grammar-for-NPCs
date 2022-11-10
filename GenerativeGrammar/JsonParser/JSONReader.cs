@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GenerativeGrammar.Model;
+using Newtonsoft.Json;
 
 namespace GenerativeGrammar.JsonParser;
 

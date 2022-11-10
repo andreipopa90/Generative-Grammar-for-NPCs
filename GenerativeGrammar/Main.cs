@@ -6,16 +6,14 @@ using GenerativeGrammar.Model;
 
 void Main()
 {
-    var levelLog = new Log();
+    var generator = new Generator();
+    var levelLog = Log.GetInstance();
     levelLog.PlayerTypes.Add("Bug");
-    levelLog.PlayerTypes.Add("Dark");
-    levelLog.PlayerTypes.Add("Dragon");
-    Parser parser = new(levelLog);
-    var lines = parser.ReadGrammarFile(
-        Path.Combine(@"..", "..", "..", "Grammar", "Grammar.txt"));
-    var tree = parser.HandleLines(lines.ToList());
-    var generator = new Generator(tree, parser.LevelLog);
-    generator.StartGeneration();
+    // levelLog.PlayerTypes.Add("Dark");
+    // levelLog.PlayerTypes.Add("Dragon");
+    levelLog.PlayerDefense = "Special";
+    levelLog.PlayerAttack = "Special";
+    generator.StartGeneration(levelLog);
     Console.WriteLine(generator.Npcs[^1]);
     Console.WriteLine("Finished");
 }

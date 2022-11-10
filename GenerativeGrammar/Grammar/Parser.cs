@@ -158,6 +158,7 @@ namespace GenerativeGrammar.Grammar
 			var index = GenerativeTree.Nodes.FindIndex(e => e.Name.Equals(nodeName));
 			var node = GenerativeTree.Nodes[index];
 			node.Source = s.Trim();
+			node.IsSourceNode = true;
 			GenerativeTree.Nodes[index] = node;
 		}
 

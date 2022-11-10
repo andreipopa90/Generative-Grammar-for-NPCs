@@ -1,16 +1,17 @@
-namespace GenerativeGrammar.Exceptions;
-
-public class NonExistentVariableException : Exception
+namespace GenerativeGrammar.Exceptions
 {
-    private readonly string _variable;
-    
-    public NonExistentVariableException(string variable)
+    public class NonExistentVariableException : Exception
     {
-        this._variable = variable;
-    }
+        private readonly string _variable;
     
-    public override string ToString()
-    {
-        return "Variable " + this._variable + " does not exist";
+        public NonExistentVariableException(string variable)
+        {
+            _variable = variable;
+        }
+    
+        public override string ToString()
+        {
+            return "Variable " + _variable + " does not exist";
+        }
     }
 }
