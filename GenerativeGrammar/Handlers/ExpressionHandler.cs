@@ -60,11 +60,16 @@ namespace GenerativeGrammar.Handlers
 
             if (string.IsNullOrEmpty(attribute)) return;
             var sides = attribute.Split(" ");
-            if (HandleVariable(sides[0]) == null) Npcs[^1].Attributes.Add(sides[0], 0);
+            if (HandleVariable(sides[0]) == null)
+            {
+                GenerativeTree.Attributes.Add(sides[0], 0);
+                // Npcs[^1].Attributes.Add(sides[0], 0);
+            }
         
             if (attribute.Contains("<-"))
             {
-                Npcs[^1].Attributes[sides[0]] = EvaluateEquation(string.Join(" ", sides.Skip(2)));
+                GenerativeTree.Attributes[sides[0]] = EvaluateEquation(string.Join(" ", sides.Skip(2)));
+                // Npcs[^1].Attributes[sides[0]] = EvaluateEquation(string.Join(" ", sides.Skip(2)));
             }
             else
             {
@@ -75,8 +80,8 @@ namespace GenerativeGrammar.Handlers
     
         private void SetVariable(string variable, int value)
         {
-            if (GenerativeTree.GlobalVariables.ContainsKey(variable)) GenerativeTree.GlobalVariables[variable] = value;
-            else if (Npcs[^1].Attributes.ContainsKey(variable)) Npcs[^1].Attributes[variable] = value;
+            // if (Npcs[^1].Attributes.ContainsKey(variable)) Npcs[^1].Attributes[variable] = value;
+            if (GenerativeTree.Attributes.ContainsKey(variable)) GenerativeTree.Attributes[variable] = value;
             else
             {
                 throw new NonExistentVariableException(variable);
@@ -329,14 +334,14 @@ namespace GenerativeGrammar.Handlers
                 dynamic field = LevelLog.GetType().GetProperty(sides[1])?.GetValue(LevelLog) ?? throw new InvalidOperationException();
                 result = sides.Length == 3 ? field[sides[2]] : field;
             }
-            else if (GenerativeTree.GlobalVariables.ContainsKey(token))
+            else if (GenerativeTree.Attributes.ContainsKey(token))
             {
-                result = GenerativeTree.GlobalVariables[token];
+                result = GenerativeTree.Attributes[token];
             }
-            else if (Npcs[^1].Attributes.ContainsKey(token))
-            {
-                result = Npcs[^1].Attributes[token];
-            }
+            // else if (Npcs[^1].Attributes.ContainsKey(token))
+            // {
+            //     result = Npcs[^1].Attributes[token];
+            // }
             else if (Npcs[^1].ValuesOfNodes.ContainsKey(token))
             {
                 var resultReturned = new List<dynamic>();

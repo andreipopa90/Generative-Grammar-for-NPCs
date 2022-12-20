@@ -21,13 +21,13 @@ namespace GenerativeGrammar.Grammar
             Npcs = new List<Npc>();
             LevelLog = levelLog;
             Handler = ExpressionHandler.GetInstance();
-            Handler.Npcs = Npcs;
-            Handler.GenerativeTree = GenerativeTree;
-            Handler.LevelLog = LevelLog;
             Picker = new WeightedListPicker(Handler);
             var parser = new Parser(levelLog: LevelLog);
             GenerativeTree = parser.HandleLines(parser.ReadGrammarFile(_filePath).ToList());
             var root = GenerativeTree.Root;
+            Handler.Npcs = Npcs;
+            Handler.LevelLog = LevelLog;
+            Handler.GenerativeTree = GenerativeTree;
             GenerateFromNode(root);
         }
 
@@ -42,7 +42,7 @@ namespace GenerativeGrammar.Grammar
      */
         private void GenerateFromNode(Node node)
         {
-            if (node.IsTerminalNode && !node.IsSourceNode)
+            if (node is {IsTerminalNode: true, IsSourceNode: false})
             {
                 HandleTerminalNode(node);
             }

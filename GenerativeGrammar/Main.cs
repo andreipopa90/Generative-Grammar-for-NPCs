@@ -9,8 +9,8 @@ void Main()
     var generator = new Generator();
     var levelLog = Log.GetInstance();
     levelLog.PlayerTypes.Add("Bug");
-    // levelLog.PlayerTypes.Add("Dark");
-    // levelLog.PlayerTypes.Add("Dragon");
+    levelLog.PlayerTypes.Add("Dark");
+    levelLog.PlayerTypes.Add("Dragon");
     levelLog.PlayerDefense = "Special";
     levelLog.PlayerAttack = "Special";
     generator.StartGeneration(levelLog);

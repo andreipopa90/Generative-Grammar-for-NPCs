@@ -17,7 +17,6 @@ Using inline if statements is also supported for assigning values to attributes.
 <h2>Augments</h2>
 <p style="text-align: justify">There are 3 types of augments added to aid in the generation of NPCs</p>
 <list style="text-align: justify">
-<li><b>global</b> which defines attributes whose values can be accesed by any node below the node where they are declared.</li>
 <li><b>from</b> which indicates the source for the node's possible values.</li>
 <li><b>condition</b> where a series of conditions are defined and they have to be tru in order for the generation to be correct.</li>
 </list>
