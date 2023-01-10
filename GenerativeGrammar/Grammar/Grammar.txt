@@ -1,6 +1,6 @@
 NPCS(LOGS)  := NPC : DomainAffix <- 1, LinkAffix <- 1, Weakness <- 1, LOGS.HasAilments ? Ailment <- 2 : Ailment <- 1, Heal <- 0 ~ NPC ~ NPC
 
-NPC         := TYPES : WT <- 1, WBug <- 1, WDark <- 1, WDragon <- 1, WElectric <- 1, WFairy <- 1, WFighting <- 1, WFire <- 1, WFlying <- 1, WGhost <- 1, WGrass <- 1, WGround <- 1, WIce <- 1, WNormal <- 1, WPoison <- 1, WPsychic <- 1, WRock <- 1, WSteel <- 1, WWater <- 1 ~ STATS ~ MOVES ~ AFFIXES : WA <- 1
+NPC         := TYPES : WT <- LOGS.CurrentLevel, WBug <- 1, WDark <- 1, WDragon <- 1, WElectric <- 1, WFairy <- 1, WFighting <- 1, WFire <- 1, WFlying <- 1, WGhost <- 1, WGrass <- 1, WGround <- 1, WIce <- 1, WNormal <- 1, WPoison <- 1, WPsychic <- 1, WRock <- 1, WSteel <- 1, WWater <- 1 ~ STATS ~ MOVES ~ AFFIXES : WA <- LOGS.CurrentLevel
 
 TYPES       := [WT] TYPE ~ TYPES : WT <- 0 | [1] TYPE
 
@@ -39,9 +39,9 @@ MOVES       := MOVE ~ MOVE ~ MOVE ~ MOVE
 
 MOVE        := CATEGORY ~ MOVETYPE ~ TARGET
             from: moves.json
-            condition: MOVE.MOVETYPE IN TYPES OR MOVE.TARGET = "self" OR MOVE.CATEGORY = "Status" | DISTINCT(MOVES)
+            condition: MOVE.MOVETYPE IN TYPES OR MOVE.TARGET = "self" OR MOVE.CATEGORY = "Status" | DISTINCT(MOVES) | SUM(MOVES,"BASEPOWER") >= 1
 
-CATEGORY    := [LOGS.PlayerStats.DEF] "Special" | [MIN(LOGS.PlayerStats.SPD, LOGS.PlayerStats.DEF)] "Status" | [LOGS.PlayerStats.SPD] "Physical"
+CATEGORY    := [LOGS.PlayerStats.DEF] "Special" | [MIN(LOGS.PlayerStats.SPD,LOGS.PlayerStats.DEF)] "Status" | [LOGS.PlayerStats.SPD] "Physical"
 TARGET      := [1] "self" | [1] "normal"
 BONUS       := [1] "Heal" : Heal += 1 | [1] "Burn" | [1] "Paralysis" | [1] "Poison"
 MOVETYPE    := [1] "Bug" | [1] "Dark" | [1] "Dragon" | [1] "Electric" | [1] "Fairy" | [1] "Fighting" | [1] "Fire" | [1] "Flying" | [1] "Ghost" | [1] "Grass" | [1] "Ground" | [1] "Ice" | [1] "Normal" | [1] "Poison" | [1] "Psychic" | [1] "Rock" | [1] "Steel" | [1] "Water"
