@@ -1,41 +1,63 @@
 [
   {
+    "keyname":"10000000voltthunderbolt",
     "name":"10,000,000 Volt Thunderbolt",
     "accuracy":1000,
     "basePower":195,
     "category":"Special",
     "pp":1,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"absorb",
     "name":"Absorb",
     "accuracy":100,
     "basePower":20,
     "category":"Special",
     "pp":25,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"accelerock",
     "name":"Accelerock",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"acid",
     "name":"Acid",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":30,
-    "target":"allAdjacentFoes",
-    "movetype":"Poison"
+    "target":"normal",
+    "movetype":"Poison",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"acidarmor",
     "name":"Acid Armor",
     "accuracy":1000,
     "basePower":0,
@@ -43,56 +65,71 @@
     "pp":20,
     "target":"self",
     "movetype":"Poison",
-    "boosts":{
-      "def":2
+    "secondary":{
+      "boosts":{
+        "def":2
+      }
     }
   },
   {
-    "name":"Acid Downpour",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Poison"
-  },
-  {
+    "keyname":"acidspray",
     "name":"Acid Spray",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spd":-2
+        }
+      }
+    }
   },
   {
+    "keyname":"acrobatics",
     "name":"Acrobatics",
     "accuracy":100,
     "basePower":55,
     "category":"Physical",
     "pp":15,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"aerialace",
     "name":"Aerial Ace",
     "accuracy":1000,
     "basePower":60,
     "category":"Physical",
     "pp":20,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"aeroblast",
     "name":"Aeroblast",
     "accuracy":95,
     "basePower":100,
     "category":"Special",
     "pp":5,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"agility",
     "name":"Agility",
     "accuracy":1000,
     "basePower":0,
@@ -100,38 +137,40 @@
     "pp":30,
     "target":"self",
     "movetype":"Psychic",
-    "boosts":{
-      "spe":2
+    "secondary":{
+      "boosts":{
+        "spe":2
+      }
     }
   },
   {
+    "keyname":"aircutter",
     "name":"Air Cutter",
     "accuracy":95,
     "basePower":60,
     "category":"Special",
     "pp":25,
-    "target":"allAdjacentFoes",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"airslash",
     "name":"Air Slash",
     "accuracy":95,
     "basePower":75,
     "category":"Special",
     "pp":15,
-    "target":"any",
-    "movetype":"Flying"
-  },
-  {
-    "name":"All-Out Pummeling",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"amnesia",
     "name":"Amnesia",
     "accuracy":1000,
     "basePower":0,
@@ -139,140 +178,200 @@
     "pp":20,
     "target":"self",
     "movetype":"Psychic",
-    "boosts":{
-      "spd":2
+    "secondary":{
+      "boosts":{
+        "spd":2
+      }
     }
   },
   {
+    "keyname":"anchorshot",
     "name":"Anchor Shot",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"ancientpower",
     "name":"Ancient Power",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+      "self-buff":{
+        "chance":10,
+        "self":{
+          "boosts":{
+            "atk":1,
+            "def":1,
+            "spa":1,
+            "spd":1,
+            "spe":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"appleacid",
     "name":"Apple Acid",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"aquajet",
     "name":"Aqua Jet",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"aquatail",
     "name":"Aqua Tail",
     "accuracy":90,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Arm Thrust",
-    "accuracy":100,
-    "basePower":15,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
+    "keyname":"aromaticmist",
     "name":"Aromatic Mist",
     "accuracy":1000,
     "basePower":0,
     "category":"Status",
     "pp":20,
-    "target":"adjacentAlly",
+    "target":"normal",
     "movetype":"Fairy",
-    "boosts":{
-      "spd":1
+    "secondary":{
+      "boosts":{
+        "spd":1
+      }
     }
   },
   {
+    "keyname":"assurance",
     "name":"Assurance",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Astonish",
-    "accuracy":100,
-    "basePower":30,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Ghost"
-  },
-  {
+    "keyname":"astralbarrage",
     "name":"Astral Barrage",
     "accuracy":100,
     "basePower":120,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Ghost"
+    "target":"normal",
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"attackorder",
     "name":"Attack Order",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"aurasphere",
     "name":"Aura Sphere",
     "accuracy":1000,
     "basePower":80,
     "category":"Special",
     "pp":20,
-    "target":"any",
-    "movetype":"Fighting"
+    "target":"normal",
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"aurawheel",
     "name":"Aura Wheel",
     "accuracy":100,
     "basePower":110,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "self-buff":{
+        "chance":100,
+        "self":{
+          "boosts":{
+            "spe":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"aurorabeam",
     "name":"Aurora Beam",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "atk":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"autotomize",
     "name":"Autotomize",
     "accuracy":1000,
     "basePower":0,
@@ -280,20 +379,27 @@
     "pp":15,
     "target":"self",
     "movetype":"Steel",
-    "boosts":{
-      "spe":2
+    "secondary":{
+      "boosts":{
+        "spe":2
+      }
     }
   },
   {
+    "keyname":"avalanche",
     "name":"Avalanche",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"babydolleyes",
     "name":"Baby-Doll Eyes",
     "accuracy":100,
     "basePower":0,
@@ -301,29 +407,27 @@
     "pp":30,
     "target":"normal",
     "movetype":"Fairy",
-    "boosts":{
-      "atk":-1
+    "secondary":{
+      "boosts":{
+        "atk":-1
+      }
     }
   },
   {
+    "keyname":"baddybad",
     "name":"Baddy Bad",
     "accuracy":95,
     "basePower":80,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Barrage",
-    "accuracy":85,
-    "basePower":15,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"barrier",
     "name":"Barrier",
     "accuracy":1000,
     "basePower":0,
@@ -331,326 +435,413 @@
     "pp":20,
     "target":"self",
     "movetype":"Psychic",
-    "boosts":{
-      "def":2
+    "secondary":{
+      "boosts":{
+        "def":2
+      }
     }
   },
   {
+    "keyname":"beakblast",
     "name":"Beak Blast",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Flying"
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Beat Up",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Dark"
-  },
-  {
+    "keyname":"behemothbash",
     "name":"Behemoth Bash",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"behemothblade",
     "name":"Behemoth Blade",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"belch",
     "name":"Belch",
     "accuracy":90,
     "basePower":120,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Bide",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
-    "target":"self",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Bind",
-    "accuracy":85,
-    "basePower":15,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"bite",
     "name":"Bite",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Black Hole Eclipse",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Dark"
-  },
-  {
+    "keyname":"blastburn",
     "name":"Blast Burn",
     "accuracy":90,
     "basePower":150,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"blazekick",
     "name":"Blaze Kick",
     "accuracy":90,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"blizzard",
     "name":"Blizzard",
     "accuracy":70,
     "basePower":110,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Ice"
-  },
-  {
-    "name":"Bloom Doom",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"blueflare",
     "name":"Blue Flare",
     "accuracy":85,
     "basePower":130,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":20,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"bodypress",
     "name":"Body Press",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"bodyslam",
     "name":"Body Slam",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"boltbeak",
     "name":"Bolt Beak",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"boltstrike",
     "name":"Bolt Strike",
     "accuracy":85,
     "basePower":130,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":20,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"boneclub",
     "name":"Bone Club",
     "accuracy":85,
     "basePower":65,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"bonemerang",
     "name":"Bonemerang",
     "accuracy":90,
     "basePower":50,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Bone Rush",
-    "accuracy":90,
-    "basePower":25,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Ground"
-  },
-  {
+    "keyname":"boomburst",
     "name":"Boomburst",
     "accuracy":100,
     "basePower":140,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacent",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"bounce",
     "name":"Bounce",
     "accuracy":85,
     "basePower":85,
     "category":"Physical",
     "pp":5,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"bouncybubble",
     "name":"Bouncy Bubble",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"branchpoke",
     "name":"Branch Poke",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":40,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"bravebird",
     "name":"Brave Bird",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":15,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"breakingswipe",
     "name":"Breaking Swipe",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Dragon"
-  },
-  {
-    "name":"Breakneck Blitz",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Dragon",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "atk":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"brickbreak",
     "name":"Brick Break",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"brine",
     "name":"Brine",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"brutalswing",
     "name":"Brutal Swing",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":20,
-    "target":"allAdjacent",
-    "movetype":"Dark"
+    "target":"normal",
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"bubble",
     "name":"Bubble",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":30,
-    "target":"allAdjacentFoes",
-    "movetype":"Water"
+    "target":"normal",
+    "movetype":"Water",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"bubblebeam",
     "name":"Bubble Beam",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"bugbite",
     "name":"Bug Bite",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"bugbuzz",
     "name":"Bug Buzz",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"bulkup",
     "name":"Bulk Up",
     "accuracy":1000,
     "basePower":0,
@@ -658,66 +849,88 @@
     "pp":20,
     "target":"self",
     "movetype":"Fighting",
-    "boosts":{
-      "atk":1,
-      "def":1
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "def":1
+      }
     }
   },
   {
+    "keyname":"bulldoze",
     "name":"Bulldoze",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":20,
-    "target":"allAdjacent",
-    "movetype":"Ground"
+    "target":"normal",
+    "movetype":"Ground",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"bulletpunch",
     "name":"Bullet Punch",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Bullet Seed",
-    "accuracy":100,
-    "basePower":25,
-    "category":"Physical",
-    "pp":30,
-    "target":"normal",
-    "movetype":"Grass"
-  },
-  {
+    "keyname":"burningjealousy",
     "name":"Burning Jealousy",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"burnup",
     "name":"Burn Up",
     "accuracy":100,
     "basePower":130,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"buzzybuzz",
     "name":"Buzzy Buzz",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":100,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"calmmind",
     "name":"Calm Mind",
     "accuracy":1000,
     "basePower":0,
@@ -725,33 +938,43 @@
     "pp":20,
     "target":"self",
     "movetype":"Psychic",
-    "boosts":{
-      "spa":1,
-      "spd":1
+    "secondary":{
+      "boosts":{
+        "spa":1,
+        "spd":1
+      }
     }
   },
   {
+    "keyname":"captivate",
     "name":"Captivate",
     "accuracy":100,
     "basePower":0,
     "category":"Status",
     "pp":20,
-    "target":"allAdjacentFoes",
+    "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "spa":-2
+    "secondary":{
+      "boosts":{
+        "spa":-2
+      }
     }
   },
   {
+    "keyname":"catastropika",
     "name":"Catastropika",
     "accuracy":1000,
     "basePower":210,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"charge",
     "name":"Charge",
     "accuracy":1000,
     "basePower":0,
@@ -759,20 +982,34 @@
     "pp":20,
     "target":"self",
     "movetype":"Electric",
-    "boosts":{
-      "spd":1
+    "secondary":{
+      "boosts":{
+        "spd":1
+      }
     }
   },
   {
+    "keyname":"chargebeam",
     "name":"Charge Beam",
     "accuracy":90,
     "basePower":50,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "self-buff":{
+        "chance":70,
+        "self":{
+          "boosts":{
+            "spa":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"charm",
     "name":"Charm",
     "accuracy":100,
     "basePower":0,
@@ -780,56 +1017,66 @@
     "pp":20,
     "target":"normal",
     "movetype":"Fairy",
-    "boosts":{
-      "atk":-2
+    "secondary":{
+      "boosts":{
+        "atk":-2
+      }
     }
   },
   {
+    "keyname":"chatter",
     "name":"Chatter",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":20,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"chipaway",
     "name":"Chip Away",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"circlethrow",
     "name":"Circle Throw",
     "accuracy":90,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Clamp",
-    "accuracy":85,
-    "basePower":35,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Water"
-  },
-  {
+    "keyname":"clangingscales",
     "name":"Clanging Scales",
     "accuracy":100,
     "basePower":110,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Dragon"
+    "target":"normal",
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"clangoroussoul",
     "name":"Clangorous Soul",
     "accuracy":100,
     "basePower":0,
@@ -837,78 +1084,73 @@
     "pp":5,
     "target":"self",
     "movetype":"Dragon",
-    "boosts":{
-      "atk":1,
-      "def":1,
-      "spa":1,
-      "spd":1,
-      "spe":1
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "def":1,
+        "spa":1,
+        "spd":1,
+        "spe":1
+      }
     }
   },
   {
+    "keyname":"clangoroussoulblaze",
     "name":"Clangorous Soulblaze",
     "accuracy":1000,
     "basePower":185,
     "category":"Special",
     "pp":1,
-    "target":"allAdjacentFoes",
-    "movetype":"Dragon"
+    "target":"normal",
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"clearsmog",
     "name":"Clear Smog",
     "accuracy":1000,
     "basePower":50,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"closecombat",
     "name":"Close Combat",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"coaching",
     "name":"Coaching",
     "accuracy":1000,
     "basePower":0,
     "category":"Status",
     "pp":10,
-    "target":"adjacentAlly",
-    "movetype":"Fighting",
-    "boosts":{
-      "atk":1,
-      "def":1
-    }
-  },
-  {
-    "name":"Coil",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Status",
-    "pp":20,
-    "target":"self",
-    "movetype":"Poison",
-    "boosts":{
-      "atk":1,
-      "def":1,
-      "accuracy":1
-    }
-  },
-  {
-    "name":"Comet Punch",
-    "accuracy":85,
-    "basePower":18,
-    "category":"Physical",
-    "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Fighting",
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "def":1
+      }
+    }
   },
   {
+    "keyname":"confide",
     "name":"Confide",
     "accuracy":1000,
     "basePower":0,
@@ -916,56 +1158,58 @@
     "pp":20,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "spa":-1
+    "secondary":{
+      "boosts":{
+        "spa":-1
+      }
     }
   },
   {
+    "keyname":"confusion",
     "name":"Confusion",
     "accuracy":100,
     "basePower":50,
     "category":"Special",
     "pp":25,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"constrict",
     "name":"Constrict",
     "accuracy":100,
     "basePower":10,
     "category":"Physical",
     "pp":35,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
-    "name":"Continental Crush",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Rock"
-  },
-  {
+    "keyname":"coreenforcer",
     "name":"Core Enforcer",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Dragon"
-  },
-  {
-    "name":"Corkscrew Crash",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"cosmicpower",
     "name":"Cosmic Power",
     "accuracy":1000,
     "basePower":0,
@@ -973,12 +1217,15 @@
     "pp":20,
     "target":"self",
     "movetype":"Psychic",
-    "boosts":{
-      "def":1,
-      "spd":1
+    "secondary":{
+      "boosts":{
+        "def":1,
+        "spd":1
+      }
     }
   },
   {
+    "keyname":"cottonguard",
     "name":"Cotton Guard",
     "accuracy":1000,
     "basePower":0,
@@ -986,131 +1233,172 @@
     "pp":10,
     "target":"self",
     "movetype":"Grass",
-    "boosts":{
-      "def":3
+    "secondary":{
+      "boosts":{
+        "def":3
+      }
     }
   },
   {
+    "keyname":"cottonspore",
     "name":"Cotton Spore",
     "accuracy":100,
     "basePower":0,
     "category":"Status",
     "pp":40,
-    "target":"allAdjacentFoes",
+    "target":"normal",
     "movetype":"Grass",
-    "boosts":{
-      "spe":-2
+    "secondary":{
+      "boosts":{
+        "spe":-2
+      }
     }
   },
   {
-    "name":"Counter",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":20,
-    "target":"scripted",
-    "movetype":"Fighting"
-  },
-  {
+    "keyname":"covet",
     "name":"Covet",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"crabhammer",
     "name":"Crabhammer",
     "accuracy":90,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"crosschop",
     "name":"Cross Chop",
     "accuracy":80,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"crosspoison",
     "name":"Cross Poison",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"crunch",
     "name":"Crunch",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+      "debuff":{
+        "chance":20,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"crushclaw",
     "name":"Crush Claw",
     "accuracy":95,
     "basePower":75,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+      "debuff":{
+        "chance":50,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
-    "name":"Crush Grip",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"cut",
     "name":"Cut",
     "accuracy":95,
     "basePower":50,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"darkestlariat",
     "name":"Darkest Lariat",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"darkpulse",
     "name":"Dark Pulse",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":15,
-    "target":"any",
-    "movetype":"Dark"
+    "target":"normal",
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dazzlinggleam",
     "name":"Dazzling Gleam",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Fairy"
+    "target":"normal",
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"decorate",
     "name":"Decorate",
     "accuracy":1000,
     "basePower":0,
@@ -1118,12 +1406,15 @@
     "pp":15,
     "target":"normal",
     "movetype":"Fairy",
-    "boosts":{
-      "atk":2,
-      "spa":2
+    "secondary":{
+      "boosts":{
+        "atk":2,
+        "spa":2
+      }
     }
   },
   {
+    "keyname":"defendorder",
     "name":"Defend Order",
     "accuracy":1000,
     "basePower":0,
@@ -1131,12 +1422,15 @@
     "pp":10,
     "target":"self",
     "movetype":"Bug",
-    "boosts":{
-      "def":1,
-      "spd":1
+    "secondary":{
+      "boosts":{
+        "def":1,
+        "spd":1
+      }
     }
   },
   {
+    "keyname":"defensecurl",
     "name":"Defense Curl",
     "accuracy":1000,
     "basePower":0,
@@ -1144,176 +1438,189 @@
     "pp":40,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "def":1
+    "secondary":{
+      "boosts":{
+        "def":1
+      }
     }
   },
   {
-    "name":"Devastating Drake",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Dragon"
-  },
-  {
+    "keyname":"diamondstorm",
     "name":"Diamond Storm",
     "accuracy":95,
     "basePower":100,
     "category":"Physical",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Rock"
+    "target":"normal",
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dig",
     "name":"Dig",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"disarmingvoice",
     "name":"Disarming Voice",
     "accuracy":1000,
     "basePower":40,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Fairy"
+    "target":"normal",
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"discharge",
     "name":"Discharge",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacent",
-    "movetype":"Electric"
+    "target":"normal",
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"dive",
     "name":"Dive",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dizzypunch",
     "name":"Dizzy Punch",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"doomdesire",
     "name":"Doom Desire",
     "accuracy":100,
     "basePower":140,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"doubleedge",
     "name":"Double-Edge",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Double Hit",
-    "accuracy":90,
-    "basePower":35,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"doubleironbash",
     "name":"Double Iron Bash",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
-  },
-  {
-    "name":"Double Kick",
-    "accuracy":100,
-    "basePower":30,
-    "category":"Physical",
-    "pp":30,
-    "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
-    "name":"Double Slap",
-    "accuracy":85,
-    "basePower":15,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Double Team",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Status",
-    "pp":15,
-    "target":"self",
-    "movetype":"Normal",
-    "boosts":{
-      "evasion":1
+    "movetype":"Steel",
+    "secondary":{
+
     }
   },
   {
+    "keyname":"dracometeor",
     "name":"Draco Meteor",
     "accuracy":90,
     "basePower":130,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragonascent",
     "name":"Dragon Ascent",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":5,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragonbreath",
     "name":"Dragon Breath",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"dragonclaw",
     "name":"Dragon Claw",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragondance",
     "name":"Dragon Dance",
     "accuracy":1000,
     "basePower":0,
@@ -1321,192 +1628,272 @@
     "pp":20,
     "target":"self",
     "movetype":"Dragon",
-    "boosts":{
-      "atk":1,
-      "spe":1
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "spe":1
+      }
     }
   },
   {
+    "keyname":"dragondarts",
     "name":"Dragon Darts",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragonenergy",
     "name":"Dragon Energy",
     "accuracy":100,
     "basePower":150,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Dragon"
+    "target":"normal",
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragonhammer",
     "name":"Dragon Hammer",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragonpulse",
     "name":"Dragon Pulse",
     "accuracy":100,
     "basePower":85,
     "category":"Special",
     "pp":10,
-    "target":"any",
-    "movetype":"Dragon"
-  },
-  {
-    "name":"Dragon Rage",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":10,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragonrush",
     "name":"Dragon Rush",
     "accuracy":75,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dragontail",
     "name":"Dragon Tail",
     "accuracy":90,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"drainingkiss",
     "name":"Draining Kiss",
     "accuracy":100,
     "basePower":50,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+      "drain":3
+    }
   },
   {
+    "keyname":"drainpunch",
     "name":"Drain Punch",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"dreameater",
     "name":"Dream Eater",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"drillpeck",
     "name":"Drill Peck",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":20,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"drillrun",
     "name":"Drill Run",
     "accuracy":95,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"drumbeating",
     "name":"Drum Beating",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"dualchop",
     "name":"Dual Chop",
     "accuracy":90,
     "basePower":40,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dualwingbeat",
     "name":"Dual Wingbeat",
     "accuracy":90,
     "basePower":40,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Flying"
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dynamaxcannon",
     "name":"Dynamax Cannon",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"dynamicpunch",
     "name":"Dynamic Punch",
     "accuracy":50,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"earthpower",
     "name":"Earth Power",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"earthquake",
     "name":"Earthquake",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":10,
-    "target":"allAdjacent",
-    "movetype":"Ground"
+    "target":"normal",
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"echoedvoice",
     "name":"Echoed Voice",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"eerieimpulse",
     "name":"Eerie Impulse",
     "accuracy":100,
     "basePower":0,
@@ -1514,119 +1901,157 @@
     "pp":15,
     "target":"normal",
     "movetype":"Electric",
-    "boosts":{
-      "spa":-2
+    "secondary":{
+      "boosts":{
+        "spa":-2
+      }
     }
   },
   {
+    "keyname":"eeriespell",
     "name":"Eerie Spell",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"eggbomb",
     "name":"Egg Bomb",
     "accuracy":75,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Electro Ball",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Electric"
-  },
-  {
+    "keyname":"electroweb",
     "name":"Electroweb",
     "accuracy":95,
     "basePower":55,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Electric"
+    "target":"normal",
+    "movetype":"Electric",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"ember",
     "name":"Ember",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":25,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
-    "name":"Endeavor",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"energyball",
     "name":"Energy Ball",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"eruption",
     "name":"Eruption",
     "accuracy":100,
     "basePower":150,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"eternabeam",
     "name":"Eternabeam",
     "accuracy":90,
     "basePower":160,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"expandingforce",
     "name":"Expanding Force",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"explosion",
     "name":"Explosion",
     "accuracy":100,
     "basePower":250,
     "category":"Physical",
     "pp":5,
-    "target":"allAdjacent",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"extrasensory",
     "name":"Extrasensory",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"extremeevoboost",
     "name":"Extreme Evoboost",
     "accuracy":1000,
     "basePower":0,
@@ -1634,51 +2059,70 @@
     "pp":1,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "atk":2,
-      "def":2,
-      "spa":2,
-      "spd":2,
-      "spe":2
+    "secondary":{
+      "boosts":{
+        "atk":2,
+        "def":2,
+        "spa":2,
+        "spd":2,
+        "spe":2
+      }
     }
   },
   {
+    "keyname":"extremespeed",
     "name":"Extreme Speed",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"facade",
     "name":"Facade",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fairywind",
     "name":"Fairy Wind",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":30,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fakeout",
     "name":"Fake Out",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"faketears",
     "name":"Fake Tears",
     "accuracy":100,
     "basePower":0,
@@ -1686,29 +2130,40 @@
     "pp":20,
     "target":"normal",
     "movetype":"Dark",
-    "boosts":{
-      "spd":-2
+    "secondary":{
+      "boosts":{
+        "spd":-2
+      }
     }
   },
   {
+    "keyname":"falsesurrender",
     "name":"False Surrender",
     "accuracy":1000,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"falseswipe",
     "name":"False Swipe",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":40,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"featherdance",
     "name":"Feather Dance",
     "accuracy":100,
     "basePower":0,
@@ -1716,221 +2171,274 @@
     "pp":15,
     "target":"normal",
     "movetype":"Flying",
-    "boosts":{
-      "atk":-2
+    "secondary":{
+      "boosts":{
+        "atk":-2
+      }
     }
   },
   {
-    "name":"Feint",
-    "accuracy":100,
-    "basePower":30,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"feintattack",
     "name":"Feint Attack",
     "accuracy":1000,
     "basePower":60,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fellstinger",
     "name":"Fell Stinger",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fierydance",
     "name":"Fiery Dance",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "self-buff":{
+        "chance":50,
+        "self":{
+          "boosts":{
+            "spa":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"fierywrath",
     "name":"Fiery Wrath",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Dark"
-  },
-  {
-    "name":"Final Gambit",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fireblast",
     "name":"Fire Blast",
     "accuracy":85,
     "basePower":110,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"firefang",
     "name":"Fire Fang",
     "accuracy":95,
     "basePower":65,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"firelash",
     "name":"Fire Lash",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"firepledge",
     "name":"Fire Pledge",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"firepunch",
     "name":"Fire Punch",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
-    "name":"Fire Spin",
-    "accuracy":85,
-    "basePower":35,
-    "category":"Special",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Fire"
-  },
-  {
+    "keyname":"firstimpression",
     "name":"First Impression",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fishiousrend",
     "name":"Fishious Rend",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Fissure",
-    "accuracy":30,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Ground"
-  },
-  {
-    "name":"Flail",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"flameburst",
     "name":"Flame Burst",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"flamecharge",
     "name":"Flame Charge",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "self-buff":{
+        "chance":100,
+        "self":{
+          "boosts":{
+            "spe":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"flamewheel",
     "name":"Flame Wheel",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"flamethrower",
     "name":"Flamethrower",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"flareblitz",
     "name":"Flare Blitz",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
-  },
-  {
-    "name":"Flash",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Status",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal",
-    "boosts":{
-      "accuracy":-1
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
     }
   },
   {
+    "keyname":"flashcannon",
     "name":"Flash Cannon",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"flatter",
     "name":"Flatter",
     "accuracy":100,
     "basePower":0,
@@ -1938,236 +2446,298 @@
     "pp":15,
     "target":"normal",
     "movetype":"Dark",
-    "boosts":{
-      "spa":1
+    "secondary":{
+      "boosts":{
+        "spa":1
+      }
     }
   },
   {
+    "keyname":"fleurcannon",
     "name":"Fleur Cannon",
     "accuracy":90,
     "basePower":130,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Fling",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Dark"
-  },
-  {
+    "keyname":"flipturn",
     "name":"Flip Turn",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"floatyfall",
     "name":"Floaty Fall",
     "accuracy":95,
     "basePower":90,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Flying"
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fly",
     "name":"Fly",
     "accuracy":95,
     "basePower":90,
     "category":"Physical",
     "pp":15,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"flyingpress",
     "name":"Flying Press",
     "accuracy":95,
     "basePower":100,
     "category":"Physical",
     "pp":10,
-    "target":"any",
-    "movetype":"Fighting"
+    "target":"normal",
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"focusblast",
     "name":"Focus Blast",
     "accuracy":70,
     "basePower":120,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"focuspunch",
     "name":"Focus Punch",
     "accuracy":100,
     "basePower":150,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"forcepalm",
     "name":"Force Palm",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"foulplay",
     "name":"Foul Play",
     "accuracy":100,
     "basePower":95,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"freezedry",
     "name":"Freeze-Dry",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"freezeshock",
     "name":"Freeze Shock",
     "accuracy":90,
     "basePower":140,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"freezingglare",
     "name":"Freezing Glare",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"freezyfrost",
     "name":"Freezy Frost",
     "accuracy":90,
     "basePower":100,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"frenzyplant",
     "name":"Frenzy Plant",
     "accuracy":90,
     "basePower":150,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"frostbreath",
     "name":"Frost Breath",
     "accuracy":90,
     "basePower":60,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Frustration",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Fury Attack",
-    "accuracy":85,
-    "basePower":15,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"furycutter",
     "name":"Fury Cutter",
     "accuracy":95,
     "basePower":40,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Fury Swipes",
-    "accuracy":80,
-    "basePower":18,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"fusionbolt",
     "name":"Fusion Bolt",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"fusionflare",
     "name":"Fusion Flare",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"futuresight",
     "name":"Future Sight",
     "accuracy":100,
     "basePower":120,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"geargrind",
     "name":"Gear Grind",
     "accuracy":85,
     "basePower":50,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"genesissupernova",
     "name":"Genesis Supernova",
     "accuracy":1000,
     "basePower":185,
     "category":"Special",
     "pp":1,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"geomancy",
     "name":"Geomancy",
     "accuracy":1000,
     "basePower":0,
@@ -2175,412 +2745,184 @@
     "pp":10,
     "target":"self",
     "movetype":"Fairy",
-    "boosts":{
-      "spa":2,
-      "spd":2,
-      "spe":2
+    "secondary":{
+      "boosts":{
+        "spa":2,
+        "spd":2,
+        "spe":2
+      }
     }
   },
   {
+    "keyname":"gigadrain",
     "name":"Giga Drain",
     "accuracy":100,
     "basePower":75,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"gigaimpact",
     "name":"Giga Impact",
     "accuracy":90,
     "basePower":150,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Gigavolt Havoc",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Electric"
-  },
-  {
+    "keyname":"glaciallance",
     "name":"Glacial Lance",
     "accuracy":100,
     "basePower":130,
     "category":"Physical",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Ice"
+    "target":"normal",
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"glaciate",
     "name":"Glaciate",
     "accuracy":95,
     "basePower":65,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Ice"
+    "target":"normal",
+    "movetype":"Ice",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"glitzyglow",
     "name":"Glitzy Glow",
     "accuracy":95,
     "basePower":80,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
-    "name":"G-Max Befuddle",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Bug"
-  },
-  {
-    "name":"G-Max Cannonade",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Water"
-  },
-  {
-    "name":"G-Max Centiferno",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Fire"
-  },
-  {
-    "name":"G-Max Chi Strike",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Fighting"
-  },
-  {
-    "name":"G-Max Cuddle",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Normal"
-  },
-  {
-    "name":"G-Max Depletion",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Dragon"
-  },
-  {
+    "keyname":"gmaxdrumsolo",
     "name":"G-Max Drum Solo",
     "accuracy":1000,
     "basePower":160,
     "category":"Physical",
     "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Grass"
+    "target":"normal",
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
-    "name":"G-Max Finale",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Fairy"
-  },
-  {
+    "keyname":"gmaxfireball",
     "name":"G-Max Fireball",
     "accuracy":1000,
     "basePower":160,
     "category":"Physical",
     "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
-    "name":"G-Max Foam Burst",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Water"
-  },
-  {
-    "name":"G-Max Gold Rush",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Normal"
-  },
-  {
-    "name":"G-Max Gravitas",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Psychic"
-  },
-  {
+    "keyname":"gmaxhydrosnipe",
     "name":"G-Max Hydrosnipe",
     "accuracy":1000,
     "basePower":160,
     "category":"Physical",
     "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Water"
-  },
-  {
-    "name":"G-Max Malodor",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Poison"
-  },
-  {
-    "name":"G-Max Meltdown",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Steel"
-  },
-  {
-    "name":"G-Max One Blow",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Dark"
-  },
-  {
-    "name":"G-Max Rapid Flow",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Water"
-  },
-  {
-    "name":"G-Max Replenish",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Normal"
-  },
-  {
-    "name":"G-Max Resonance",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Ice"
-  },
-  {
-    "name":"G-Max Sandblast",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Ground"
-  },
-  {
-    "name":"G-Max Smite",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Fairy"
-  },
-  {
-    "name":"G-Max Snooze",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Dark"
-  },
-  {
-    "name":"G-Max Steelsurge",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Steel"
-  },
-  {
-    "name":"G-Max Stonesurge",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":5,
-    "target":"adjacentFoe",
-    "movetype":"Water"
-  },
-  {
-    "name":"G-Max Stun Shock",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Electric"
-  },
-  {
-    "name":"G-Max Sweetness",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Grass"
-  },
-  {
-    "name":"G-Max Tartness",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Grass"
-  },
-  {
-    "name":"G-Max Terror",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Ghost"
-  },
-  {
-    "name":"G-Max Vine Lash",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Grass"
-  },
-  {
-    "name":"G-Max Volcalith",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Rock"
-  },
-  {
-    "name":"G-Max Volt Crash",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Electric"
-  },
-  {
-    "name":"G-Max Wildfire",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Fire"
-  },
-  {
-    "name":"G-Max Wind Rage",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Flying"
-  },
-  {
-    "name":"Grass Knot",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":20,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"grasspledge",
     "name":"Grass Pledge",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"grassyglide",
     "name":"Grassy Glide",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"gravapple",
     "name":"Grav Apple",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"growl",
     "name":"Growl",
     "accuracy":100,
     "basePower":0,
     "category":"Status",
     "pp":40,
-    "target":"allAdjacentFoes",
+    "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":-1
+    "secondary":{
+      "boosts":{
+        "atk":-1
+      }
     }
   },
   {
+    "keyname":"growth",
     "name":"Growth",
     "accuracy":1000,
     "basePower":0,
@@ -2588,66 +2930,57 @@
     "pp":20,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "atk":1,
-      "spa":1
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "spa":1
+      }
     }
   },
   {
-    "name":"Guardian of Alola",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Special",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Fairy"
-  },
-  {
-    "name":"Guillotine",
-    "accuracy":30,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"gunkshot",
     "name":"Gunk Shot",
     "accuracy":80,
     "basePower":120,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"gust",
     "name":"Gust",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":35,
-    "target":"any",
-    "movetype":"Flying"
-  },
-  {
-    "name":"Gyro Ball",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hammerarm",
     "name":"Hammer Arm",
     "accuracy":90,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"harden",
     "name":"Harden",
     "accuracy":1000,
     "basePower":0,
@@ -2655,522 +2988,641 @@
     "pp":30,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "def":1
+    "secondary":{
+      "boosts":{
+        "def":1
+      }
     }
   },
   {
+    "keyname":"headbutt",
     "name":"Headbutt",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"headcharge",
     "name":"Head Charge",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"headsmash",
     "name":"Head Smash",
     "accuracy":80,
     "basePower":150,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"heartstamp",
     "name":"Heart Stamp",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Heat Crash",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Fire"
-  },
-  {
+    "keyname":"heatwave",
     "name":"Heat Wave",
     "accuracy":90,
     "basePower":95,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Fire"
-  },
-  {
-    "name":"Heavy Slam",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"hex",
     "name":"Hex",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpower",
     "name":"Hidden Power",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerbug",
     "name":"Hidden Power Bug",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerdark",
     "name":"Hidden Power Dark",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerdragon",
     "name":"Hidden Power Dragon",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerelectric",
     "name":"Hidden Power Electric",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerfighting",
     "name":"Hidden Power Fighting",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerfire",
     "name":"Hidden Power Fire",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerflying",
     "name":"Hidden Power Flying",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Flying"
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerghost",
     "name":"Hidden Power Ghost",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowergrass",
     "name":"Hidden Power Grass",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerground",
     "name":"Hidden Power Ground",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerice",
     "name":"Hidden Power Ice",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerpoison",
     "name":"Hidden Power Poison",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerpsychic",
     "name":"Hidden Power Psychic",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerrock",
     "name":"Hidden Power Rock",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowersteel",
     "name":"Hidden Power Steel",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hiddenpowerwater",
     "name":"Hidden Power Water",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"highhorsepower",
     "name":"High Horsepower",
     "accuracy":95,
     "basePower":95,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"highjumpkick",
     "name":"High Jump Kick",
     "accuracy":90,
     "basePower":130,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"holdback",
     "name":"Hold Back",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":40,
     "target":"normal",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Hone Claws",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Status",
-    "pp":15,
-    "target":"self",
-    "movetype":"Dark",
-    "boosts":{
-      "atk":1,
-      "accuracy":1
+    "movetype":"Normal",
+    "secondary":{
+
     }
   },
   {
+    "keyname":"hornattack",
     "name":"Horn Attack",
     "accuracy":100,
     "basePower":65,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Horn Drill",
-    "accuracy":30,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"hornleech",
     "name":"Horn Leech",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"howl",
     "name":"Howl",
     "accuracy":1000,
     "basePower":0,
     "category":"Status",
     "pp":40,
-    "target":"allies",
+    "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":1
+    "secondary":{
+      "boosts":{
+        "atk":1
+      }
     }
   },
   {
+    "keyname":"hurricane",
     "name":"Hurricane",
     "accuracy":70,
     "basePower":110,
     "category":"Special",
     "pp":10,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hydrocannon",
     "name":"Hydro Cannon",
     "accuracy":90,
     "basePower":150,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hydropump",
     "name":"Hydro Pump",
     "accuracy":80,
     "basePower":110,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Hydro Vortex",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Water"
-  },
-  {
+    "keyname":"hyperbeam",
     "name":"Hyper Beam",
     "accuracy":90,
     "basePower":150,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hyperfang",
     "name":"Hyper Fang",
     "accuracy":90,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hyperspacefury",
     "name":"Hyperspace Fury",
     "accuracy":1000,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hyperspacehole",
     "name":"Hyperspace Hole",
     "accuracy":1000,
     "basePower":80,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"hypervoice",
     "name":"Hyper Voice",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Ice Ball",
-    "accuracy":90,
-    "basePower":30,
-    "category":"Physical",
-    "pp":20,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"icebeam",
     "name":"Ice Beam",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"iceburn",
     "name":"Ice Burn",
     "accuracy":90,
     "basePower":140,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"icefang",
     "name":"Ice Fang",
     "accuracy":95,
     "basePower":65,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"icehammer",
     "name":"Ice Hammer",
     "accuracy":90,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"icepunch",
     "name":"Ice Punch",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"iceshard",
     "name":"Ice Shard",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"iciclecrash",
     "name":"Icicle Crash",
     "accuracy":90,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ice"
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Icicle Spear",
-    "accuracy":100,
-    "basePower":25,
-    "category":"Physical",
-    "pp":30,
-    "target":"normal",
-    "movetype":"Ice"
-  },
-  {
+    "keyname":"icywind",
     "name":"Icy Wind",
     "accuracy":95,
     "basePower":55,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Ice"
+    "target":"normal",
+    "movetype":"Ice",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"incinerate",
     "name":"Incinerate",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"inferno",
     "name":"Inferno",
     "accuracy":50,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":100,
+        "status":"brn"
+      }
+    }
   },
   {
-    "name":"Inferno Overdrive",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Fire"
-  },
-  {
-    "name":"Infestation",
-    "accuracy":100,
-    "basePower":20,
-    "category":"Special",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Bug"
-  },
-  {
+    "keyname":"irondefense",
     "name":"Iron Defense",
     "accuracy":1000,
     "basePower":0,
@@ -3178,476 +3630,450 @@
     "pp":15,
     "target":"self",
     "movetype":"Steel",
-    "boosts":{
-      "def":2
+    "secondary":{
+      "boosts":{
+        "def":2
+      }
     }
   },
   {
+    "keyname":"ironhead",
     "name":"Iron Head",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"irontail",
     "name":"Iron Tail",
     "accuracy":75,
     "basePower":100,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+      "debuff":{
+        "chance":30,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"jawlock",
     "name":"Jaw Lock",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"judgment",
     "name":"Judgment",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"jumpkick",
     "name":"Jump Kick",
     "accuracy":95,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"karatechop",
     "name":"Karate Chop",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
-    "name":"Kinesis",
-    "accuracy":80,
-    "basePower":0,
-    "category":"Status",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Psychic",
-    "boosts":{
-      "accuracy":-1
+    "movetype":"Fighting",
+    "secondary":{
+
     }
   },
   {
+    "keyname":"knockoff",
     "name":"Knock Off",
     "accuracy":100,
     "basePower":65,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"landswrath",
     "name":"Land's Wrath",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Ground"
+    "target":"normal",
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"lashout",
     "name":"Lash Out",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"lastresort",
     "name":"Last Resort",
     "accuracy":100,
     "basePower":140,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"lavaplume",
     "name":"Lava Plume",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacent",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"leafage",
     "name":"Leafage",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":40,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"leafblade",
     "name":"Leaf Blade",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"leafstorm",
     "name":"Leaf Storm",
     "accuracy":90,
     "basePower":130,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"leaftornado",
     "name":"Leaf Tornado",
     "accuracy":90,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"leechlife",
     "name":"Leech Life",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"leer",
     "name":"Leer",
     "accuracy":100,
     "basePower":0,
     "category":"Status",
     "pp":30,
-    "target":"allAdjacentFoes",
+    "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "def":-1
+    "secondary":{
+      "boosts":{
+        "def":-1
+      }
     }
   },
   {
+    "keyname":"letssnuggleforever",
     "name":"Let's Snuggle Forever",
     "accuracy":1000,
     "basePower":190,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"lick",
     "name":"Lick",
     "accuracy":100,
     "basePower":30,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"lightofruin",
     "name":"Light of Ruin",
     "accuracy":90,
     "basePower":140,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"lightthatburnsthesky",
     "name":"Light That Burns the Sky",
     "accuracy":1000,
     "basePower":200,
     "category":"Special",
     "pp":1,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"liquidation",
     "name":"Liquidation",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+      "debuff":{
+        "chance":20,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
-    "name":"Low Kick",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
+    "keyname":"lowsweep",
     "name":"Low Sweep",
     "accuracy":100,
     "basePower":65,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"lunge",
     "name":"Lunge",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "atk":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"lusterpurge",
     "name":"Luster Purge",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+      "debuff":{
+        "chance":50,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"machpunch",
     "name":"Mach Punch",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"magicalleaf",
     "name":"Magical Leaf",
     "accuracy":1000,
     "basePower":60,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"magmastorm",
     "name":"Magma Storm",
     "accuracy":75,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"magnetbomb",
     "name":"Magnet Bomb",
     "accuracy":1000,
     "basePower":60,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Magnitude",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":30,
-    "target":"allAdjacent",
-    "movetype":"Ground"
-  },
-  {
+    "keyname":"maliciousmoonsault",
     "name":"Malicious Moonsault",
     "accuracy":1000,
     "basePower":180,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Max Airstream",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Flying"
-  },
-  {
-    "name":"Max Darkness",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Dark"
-  },
-  {
+    "keyname":"maxflare",
     "name":"Max Flare",
     "accuracy":1000,
     "basePower":100,
     "category":"Physical",
     "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Max Flutterby",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Bug"
-  },
-  {
-    "name":"Max Geyser",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Water"
-  },
-  {
-    "name":"Max Hailstorm",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Ice"
-  },
-  {
-    "name":"Max Knuckle",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Fighting"
-  },
-  {
-    "name":"Max Lightning",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Electric"
-  },
-  {
-    "name":"Max Mindstorm",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Psychic"
-  },
-  {
-    "name":"Max Ooze",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Poison"
-  },
-  {
-    "name":"Max Overgrowth",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Grass"
-  },
-  {
-    "name":"Max Phantasm",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Ghost"
-  },
-  {
-    "name":"Max Quake",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Ground"
-  },
-  {
-    "name":"Max Rockfall",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Rock"
-  },
-  {
-    "name":"Max Starfall",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Fairy"
-  },
-  {
-    "name":"Max Steelspike",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Steel"
-  },
-  {
-    "name":"Max Strike",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Max Wyrmwind",
-    "accuracy":1000,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"adjacentFoe",
-    "movetype":"Dragon"
-  },
-  {
+    "keyname":"meditate",
     "name":"Meditate",
     "accuracy":1000,
     "basePower":0,
@@ -3655,47 +4081,66 @@
     "pp":40,
     "target":"self",
     "movetype":"Psychic",
-    "boosts":{
-      "atk":1
+    "secondary":{
+      "boosts":{
+        "atk":1
+      }
     }
   },
   {
+    "keyname":"megadrain",
     "name":"Mega Drain",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"megahorn",
     "name":"Megahorn",
     "accuracy":85,
     "basePower":120,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"megakick",
     "name":"Mega Kick",
     "accuracy":75,
     "basePower":120,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"megapunch",
     "name":"Mega Punch",
     "accuracy":85,
     "basePower":80,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"memento",
     "name":"Memento",
     "accuracy":100,
     "basePower":0,
@@ -3703,39 +4148,48 @@
     "pp":10,
     "target":"normal",
     "movetype":"Dark",
-    "boosts":{
-      "atk":-2,
-      "spa":-2
+    "secondary":{
+      "boosts":{
+        "atk":-2,
+        "spa":-2
+      }
     }
   },
   {
+    "keyname":"menacingmoonrazemaelstrom",
     "name":"Menacing Moonraze Maelstrom",
     "accuracy":1000,
     "basePower":200,
     "category":"Special",
     "pp":1,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Metal Burst",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
-    "target":"scripted",
-    "movetype":"Steel"
-  },
-  {
+    "keyname":"metalclaw",
     "name":"Metal Claw",
     "accuracy":95,
     "basePower":50,
     "category":"Physical",
     "pp":35,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+      "self-buff":{
+        "chance":10,
+        "self":{
+          "boosts":{
+            "atk":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"metalsound",
     "name":"Metal Sound",
     "accuracy":85,
     "basePower":0,
@@ -3743,167 +4197,223 @@
     "pp":40,
     "target":"normal",
     "movetype":"Steel",
-    "boosts":{
-      "spd":-2
+    "secondary":{
+      "boosts":{
+        "spd":-2
+      }
     }
   },
   {
+    "keyname":"meteorassault",
     "name":"Meteor Assault",
     "accuracy":100,
     "basePower":150,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"meteorbeam",
     "name":"Meteor Beam",
     "accuracy":90,
     "basePower":120,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"meteormash",
     "name":"Meteor Mash",
     "accuracy":90,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+      "self-buff":{
+        "chance":20,
+        "self":{
+          "boosts":{
+            "atk":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"mindblown",
     "name":"Mind Blown",
     "accuracy":100,
     "basePower":150,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacent",
-    "movetype":"Fire"
-  },
-  {
-    "name":"Minimize",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Status",
-    "pp":10,
-    "target":"self",
-    "movetype":"Normal",
-    "boosts":{
-      "evasion":2
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
     }
   },
   {
-    "name":"Mirror Coat",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":20,
-    "target":"scripted",
-    "movetype":"Psychic"
-  },
-  {
+    "keyname":"mirrorshot",
     "name":"Mirror Shot",
     "accuracy":85,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"mistball",
     "name":"Mist Ball",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+      "debuff":{
+        "chance":50,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"mistyexplosion",
     "name":"Misty Explosion",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacent",
-    "movetype":"Fairy"
+    "target":"normal",
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"moonblast",
     "name":"Moonblast",
     "accuracy":100,
     "basePower":95,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+      "debuff":{
+        "chance":30,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"moongeistbeam",
     "name":"Moongeist Beam",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"mudbomb",
     "name":"Mud Bomb",
     "accuracy":85,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"mudshot",
     "name":"Mud Shot",
     "accuracy":95,
     "basePower":55,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
-    "name":"Mud-Slap",
-    "accuracy":100,
-    "basePower":20,
-    "category":"Special",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Ground"
-  },
-  {
+    "keyname":"muddywater",
     "name":"Muddy Water",
     "accuracy":85,
     "basePower":90,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Water"
+    "target":"normal",
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"multiattack",
     "name":"Multi-Attack",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"mysticalfire",
     "name":"Mystical Fire",
     "accuracy":100,
     "basePower":75,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"nastyplot",
     "name":"Nasty Plot",
     "accuracy":1000,
     "basePower":0,
@@ -3911,74 +4421,53 @@
     "pp":20,
     "target":"self",
     "movetype":"Dark",
-    "boosts":{
-      "spa":2
+    "secondary":{
+      "boosts":{
+        "spa":2
+      }
     }
   },
   {
-    "name":"Natural Gift",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Nature's Madness",
-    "accuracy":90,
-    "basePower":0,
-    "category":"Special",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Fairy"
-  },
-  {
+    "keyname":"needlearm",
     "name":"Needle Arm",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Never-Ending Nightmare",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Ghost"
-  },
-  {
+    "keyname":"nightdaze",
     "name":"Night Daze",
     "accuracy":95,
     "basePower":85,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Night Shade",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Ghost"
-  },
-  {
+    "keyname":"nightslash",
     "name":"Night Slash",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"nobleroar",
     "name":"Noble Roar",
     "accuracy":100,
     "basePower":0,
@@ -3986,12 +4475,15 @@
     "pp":30,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":-1,
-      "spa":-1
+    "secondary":{
+      "boosts":{
+        "atk":-1,
+        "spa":-1
+      }
     }
   },
   {
+    "keyname":"noretreat",
     "name":"No Retreat",
     "accuracy":1000,
     "basePower":0,
@@ -3999,204 +4491,271 @@
     "pp":5,
     "target":"self",
     "movetype":"Fighting",
-    "boosts":{
-      "atk":1,
-      "def":1,
-      "spa":1,
-      "spd":1,
-      "spe":1
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "def":1,
+        "spa":1,
+        "spd":1,
+        "spe":1
+      }
     }
   },
   {
+    "keyname":"nuzzle",
     "name":"Nuzzle",
     "accuracy":100,
     "basePower":20,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":100,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"oblivionwing",
     "name":"Oblivion Wing",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+      "drain":3
+    }
   },
   {
+    "keyname":"oceanicoperetta",
     "name":"Oceanic Operetta",
     "accuracy":1000,
     "basePower":195,
     "category":"Special",
     "pp":1,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"octazooka",
     "name":"Octazooka",
     "accuracy":85,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"ominouswind",
     "name":"Ominous Wind",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+      "self-buff":{
+        "chance":10,
+        "self":{
+          "boosts":{
+            "atk":1,
+            "def":1,
+            "spa":1,
+            "spd":1,
+            "spe":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"originpulse",
     "name":"Origin Pulse",
     "accuracy":85,
     "basePower":110,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Water"
+    "target":"normal",
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"outrage",
     "name":"Outrage",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":10,
-    "target":"randomNormal",
-    "movetype":"Dragon"
+    "target":"normal",
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"overdrive",
     "name":"Overdrive",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Electric"
+    "target":"normal",
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"overheat",
     "name":"Overheat",
     "accuracy":90,
     "basePower":130,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"paleowave",
     "name":"Paleo Wave",
     "accuracy":100,
     "basePower":85,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+      "debuff":{
+        "chance":20,
+        "boosts":{
+          "atk":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"paraboliccharge",
     "name":"Parabolic Charge",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":20,
-    "target":"allAdjacent",
-    "movetype":"Electric"
+    "target":"normal",
+    "movetype":"Electric",
+    "secondary":{
+      "drain":1
+    }
   },
   {
+    "keyname":"payback",
     "name":"Payback",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"payday",
     "name":"Pay Day",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Peck",
-    "accuracy":100,
-    "basePower":35,
-    "category":"Physical",
-    "pp":35,
-    "target":"any",
-    "movetype":"Flying"
-  },
-  {
+    "keyname":"petalblizzard",
     "name":"Petal Blizzard",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":15,
-    "target":"allAdjacent",
-    "movetype":"Grass"
+    "target":"normal",
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"petaldance",
     "name":"Petal Dance",
     "accuracy":100,
     "basePower":120,
     "category":"Special",
     "pp":10,
-    "target":"randomNormal",
-    "movetype":"Grass"
+    "target":"normal",
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"phantomforce",
     "name":"Phantom Force",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"photongeyser",
     "name":"Photon Geyser",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Pika Papow",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Special",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Electric"
-  },
-  {
-    "name":"Pin Missile",
-    "accuracy":95,
-    "basePower":25,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Bug"
-  },
-  {
+    "keyname":"plasmafists",
     "name":"Plasma Fists",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"playnice",
     "name":"Play Nice",
     "accuracy":1000,
     "basePower":0,
@@ -4204,281 +4763,381 @@
     "pp":20,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":-1
+    "secondary":{
+      "boosts":{
+        "atk":-1
+      }
     }
   },
   {
+    "keyname":"playrough",
     "name":"Play Rough",
     "accuracy":90,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "atk":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"pluck",
     "name":"Pluck",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":20,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"poisonfang",
     "name":"Poison Fang",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"poisonjab",
     "name":"Poison Jab",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"poisonsting",
     "name":"Poison Sting",
     "accuracy":100,
     "basePower":15,
     "category":"Physical",
     "pp":35,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"poisontail",
     "name":"Poison Tail",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"pollenpuff",
     "name":"Pollen Puff",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"poltergeist",
     "name":"Poltergeist",
     "accuracy":90,
     "basePower":110,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"pound",
     "name":"Pound",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":35,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"powdersnow",
     "name":"Powder Snow",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":25,
-    "target":"allAdjacentFoes",
-    "movetype":"Ice"
+    "target":"normal",
+    "movetype":"Ice",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"powergem",
     "name":"Power Gem",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Power Trip",
-    "accuracy":100,
-    "basePower":20,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Dark"
-  },
-  {
+    "keyname":"poweruppunch",
     "name":"Power-Up Punch",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "self-buff":{
+        "chance":100,
+        "self":{
+          "boosts":{
+            "atk":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"powerwhip",
     "name":"Power Whip",
     "accuracy":85,
     "basePower":120,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"precipiceblades",
     "name":"Precipice Blades",
     "accuracy":85,
     "basePower":120,
     "category":"Physical",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Ground"
-  },
-  {
-    "name":"Present",
-    "accuracy":90,
-    "basePower":0,
-    "category":"Physical",
-    "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"prismaticlaser",
     "name":"Prismatic Laser",
     "accuracy":100,
     "basePower":160,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"psybeam",
     "name":"Psybeam",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"psychic",
     "name":"Psychic",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+      "debuff":{
+        "chance":10,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"psychicfangs",
     "name":"Psychic Fangs",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"psychoboost",
     "name":"Psycho Boost",
     "accuracy":90,
     "basePower":140,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"psychocut",
     "name":"Psycho Cut",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"psyshock",
     "name":"Psyshock",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"psystrike",
     "name":"Psystrike",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Psywave",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Psychic"
-  },
-  {
+    "keyname":"pulverizingpancake",
     "name":"Pulverizing Pancake",
     "accuracy":1000,
     "basePower":210,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Punishment",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Dark"
-  },
-  {
+    "keyname":"pursuit",
     "name":"Pursuit",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"pyroball",
     "name":"Pyro Ball",
     "accuracy":90,
     "basePower":120,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"quickattack",
     "name":"Quick Attack",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"quiverdance",
     "name":"Quiver Dance",
     "accuracy":1000,
     "basePower":0,
@@ -4486,148 +5145,171 @@
     "pp":20,
     "target":"self",
     "movetype":"Bug",
-    "boosts":{
-      "spa":1,
-      "spd":1,
-      "spe":1
+    "secondary":{
+      "boosts":{
+        "spa":1,
+        "spd":1,
+        "spe":1
+      }
     }
   },
   {
-    "name":"Rage",
-    "accuracy":100,
-    "basePower":20,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"rapidspin",
     "name":"Rapid Spin",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":40,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+      "self-buff":{
+        "chance":100,
+        "self":{
+          "boosts":{
+            "spe":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"razorleaf",
     "name":"Razor Leaf",
     "accuracy":95,
     "basePower":55,
     "category":"Physical",
     "pp":25,
-    "target":"allAdjacentFoes",
-    "movetype":"Grass"
+    "target":"normal",
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"razorshell",
     "name":"Razor Shell",
     "accuracy":95,
     "basePower":75,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+      "debuff":{
+        "chance":50,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"razorwind",
     "name":"Razor Wind",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"relicsong",
     "name":"Relic Song",
     "accuracy":100,
     "basePower":75,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"retaliate",
     "name":"Retaliate",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Return",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"revelationdance",
     "name":"Revelation Dance",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"revenge",
     "name":"Revenge",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Reversal",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
+    "keyname":"risingvoltage",
     "name":"Rising Voltage",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"roaroftime",
     "name":"Roar of Time",
     "accuracy":90,
     "basePower":150,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Rock Blast",
-    "accuracy":90,
-    "basePower":25,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Rock"
-  },
-  {
+    "keyname":"rockclimb",
     "name":"Rock Climb",
     "accuracy":85,
     "basePower":90,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"rockpolish",
     "name":"Rock Polish",
     "accuracy":1000,
     "basePower":0,
@@ -4635,158 +5317,173 @@
     "pp":20,
     "target":"self",
     "movetype":"Rock",
-    "boosts":{
-      "spe":2
+    "secondary":{
+      "boosts":{
+        "spe":2
+      }
     }
   },
   {
+    "keyname":"rockslide",
     "name":"Rock Slide",
     "accuracy":90,
     "basePower":75,
     "category":"Physical",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Rock"
+    "target":"normal",
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"rocksmash",
     "name":"Rock Smash",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "debuff":{
+        "chance":50,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"rockthrow",
     "name":"Rock Throw",
     "accuracy":90,
     "basePower":50,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"rocktomb",
     "name":"Rock Tomb",
     "accuracy":95,
     "basePower":60,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spe":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"rockwrecker",
     "name":"Rock Wrecker",
     "accuracy":90,
     "basePower":150,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"rollingkick",
     "name":"Rolling Kick",
     "accuracy":85,
     "basePower":60,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Rollout",
-    "accuracy":90,
-    "basePower":30,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Rock"
-  },
-  {
+    "keyname":"round",
     "name":"Round",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"sacredfire",
     "name":"Sacred Fire",
     "accuracy":95,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":50,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"sacredsword",
     "name":"Sacred Sword",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
-    "name":"Sand Attack",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Status",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Ground",
-    "boosts":{
-      "accuracy":-1
+    "movetype":"Fighting",
+    "secondary":{
+
     }
   },
   {
-    "name":"Sand Tomb",
-    "accuracy":85,
-    "basePower":35,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Ground"
-  },
-  {
+    "keyname":"sappyseed",
     "name":"Sappy Seed",
     "accuracy":90,
     "basePower":100,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Savage Spin-Out",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Bug"
-  },
-  {
+    "keyname":"scald",
     "name":"Scald",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"brn"
+      }
+    }
   },
   {
-    "name":"Scale Shot",
-    "accuracy":90,
-    "basePower":25,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Dragon"
-  },
-  {
+    "keyname":"scaryface",
     "name":"Scary Face",
     "accuracy":100,
     "basePower":0,
@@ -4794,29 +5491,43 @@
     "pp":10,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "spe":-2
+    "secondary":{
+      "boosts":{
+        "spe":-2
+      }
     }
   },
   {
+    "keyname":"scorchingsands",
     "name":"Scorching Sands",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"scratch",
     "name":"Scratch",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":35,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"screech",
     "name":"Screech",
     "accuracy":85,
     "basePower":0,
@@ -4824,146 +5535,222 @@
     "pp":40,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "def":-2
+    "secondary":{
+      "boosts":{
+        "def":-2
+      }
     }
   },
   {
+    "keyname":"searingshot",
     "name":"Searing Shot",
     "accuracy":100,
     "basePower":100,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacent",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"searingsunrazesmash",
     "name":"Searing Sunraze Smash",
     "accuracy":1000,
     "basePower":200,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"secretpower",
     "name":"Secret Power",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"secretsword",
     "name":"Secret Sword",
     "accuracy":100,
     "basePower":85,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"seedbomb",
     "name":"Seed Bomb",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"seedflare",
     "name":"Seed Flare",
     "accuracy":85,
     "basePower":120,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "debuff":{
+        "chance":40,
+        "boosts":{
+          "spd":-2
+        }
+      }
+    }
   },
   {
-    "name":"Seismic Toss",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
+    "keyname":"selfdestruct",
     "name":"Self-Destruct",
     "accuracy":100,
     "basePower":200,
     "category":"Physical",
     "pp":5,
-    "target":"allAdjacent",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"shadowball",
     "name":"Shadow Ball",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+      "debuff":{
+        "chance":20,
+        "boosts":{
+          "spd":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"shadowbone",
     "name":"Shadow Bone",
     "accuracy":100,
     "basePower":85,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+      "debuff":{
+        "chance":20,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"shadowclaw",
     "name":"Shadow Claw",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"shadowforce",
     "name":"Shadow Force",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"shadowpunch",
     "name":"Shadow Punch",
     "accuracy":1000,
     "basePower":60,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"shadowsneak",
     "name":"Shadow Sneak",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"shadowstrike",
     "name":"Shadow Strike",
     "accuracy":95,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+      "debuff":{
+        "chance":50,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"sharpen",
     "name":"Sharpen",
     "accuracy":1000,
     "basePower":0,
@@ -4971,38 +5758,30 @@
     "pp":30,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "atk":1
+    "secondary":{
+      "boosts":{
+        "atk":1
+      }
     }
   },
   {
-    "name":"Shattered Psyche",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Psychic"
-  },
-  {
-    "name":"Sheer Cold",
-    "accuracy":30,
-    "basePower":0,
-    "category":"Special",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Ice"
-  },
-  {
+    "keyname":"shellsidearm",
     "name":"Shell Side Arm",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":20,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"shellsmash",
     "name":"Shell Smash",
     "accuracy":1000,
     "basePower":0,
@@ -5010,24 +5789,31 @@
     "pp":15,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "def":-1,
-      "spd":-1,
-      "atk":2,
-      "spa":2,
-      "spe":2
+    "secondary":{
+      "boosts":{
+        "def":-1,
+        "spd":-1,
+        "atk":2,
+        "spa":2,
+        "spe":2
+      }
     }
   },
   {
+    "keyname":"shelltrap",
     "name":"Shell Trap",
     "accuracy":100,
     "basePower":150,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Fire"
+    "target":"normal",
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"shiftgear",
     "name":"Shift Gear",
     "accuracy":1000,
     "basePower":0,
@@ -5035,594 +5821,784 @@
     "pp":10,
     "target":"self",
     "movetype":"Steel",
-    "boosts":{
-      "spe":2,
-      "atk":1
+    "secondary":{
+      "boosts":{
+        "spe":2,
+        "atk":1
+      }
     }
   },
   {
+    "keyname":"shockwave",
     "name":"Shock Wave",
     "accuracy":1000,
     "basePower":60,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"signalbeam",
     "name":"Signal Beam",
     "accuracy":100,
     "basePower":75,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"silverwind",
     "name":"Silver Wind",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+      "self-buff":{
+        "chance":10,
+        "self":{
+          "boosts":{
+            "atk":1,
+            "def":1,
+            "spa":1,
+            "spd":1,
+            "spe":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"sinisterarrowraid",
     "name":"Sinister Arrow Raid",
     "accuracy":1000,
     "basePower":180,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"sizzlyslide",
     "name":"Sizzly Slide",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+      "status":{
+        "chance":100,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"skittersmack",
     "name":"Skitter Smack",
     "accuracy":90,
     "basePower":70,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"skullbash",
     "name":"Skull Bash",
     "accuracy":100,
     "basePower":130,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"skyattack",
     "name":"Sky Attack",
     "accuracy":90,
     "basePower":140,
     "category":"Physical",
     "pp":5,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"skydrop",
     "name":"Sky Drop",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":10,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"skyuppercut",
     "name":"Sky Uppercut",
     "accuracy":90,
     "basePower":85,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"slam",
     "name":"Slam",
     "accuracy":75,
     "basePower":80,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"slash",
     "name":"Slash",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"sludge",
     "name":"Sludge",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"sludgebomb",
     "name":"Sludge Bomb",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"sludgewave",
     "name":"Sludge Wave",
     "accuracy":100,
     "basePower":95,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacent",
-    "movetype":"Poison"
+    "target":"normal",
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"psn"
+      }
+    }
   },
   {
+    "keyname":"smackdown",
     "name":"Smack Down",
     "accuracy":100,
     "basePower":50,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"smartstrike",
     "name":"Smart Strike",
     "accuracy":1000,
     "basePower":70,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"smellingsalts",
     "name":"Smelling Salts",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"smog",
     "name":"Smog",
     "accuracy":70,
     "basePower":30,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Poison"
-  },
-  {
-    "name":"Smokescreen",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Status",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal",
-    "boosts":{
-      "accuracy":-1
+    "movetype":"Poison",
+    "secondary":{
+      "status":{
+        "chance":40,
+        "status":"psn"
+      }
     }
   },
   {
-    "name":"Snap Trap",
-    "accuracy":100,
-    "basePower":35,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Grass"
-  },
-  {
+    "keyname":"snarl",
     "name":"Snarl",
     "accuracy":95,
     "basePower":55,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Dark"
+    "target":"normal",
+    "movetype":"Dark",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"snipeshot",
     "name":"Snipe Shot",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"snore",
     "name":"Snore",
     "accuracy":100,
     "basePower":50,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"solarbeam",
     "name":"Solar Beam",
     "accuracy":100,
     "basePower":120,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"solarblade",
     "name":"Solar Blade",
     "accuracy":100,
     "basePower":125,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Sonic Boom",
-    "accuracy":90,
-    "basePower":0,
-    "category":"Special",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"soulstealing7starstrike",
     "name":"Soul-Stealing 7-Star Strike",
     "accuracy":1000,
     "basePower":195,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"spacialrend",
     "name":"Spacial Rend",
     "accuracy":95,
     "basePower":100,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Dragon"
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"spark",
     "name":"Spark",
     "accuracy":100,
     "basePower":65,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"sparklingaria",
     "name":"Sparkling Aria",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacent",
-    "movetype":"Water"
+    "target":"normal",
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"sparklyswirl",
     "name":"Sparkly Swirl",
     "accuracy":85,
     "basePower":120,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"spectralthief",
     "name":"Spectral Thief",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Spike Cannon",
-    "accuracy":100,
-    "basePower":20,
-    "category":"Physical",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"spiritbreak",
     "name":"Spirit Break",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"spiritshackle",
     "name":"Spirit Shackle",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ghost"
+    "movetype":"Ghost",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Spit Up",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"splinteredstormshards",
     "name":"Splintered Stormshards",
     "accuracy":1000,
     "basePower":190,
     "category":"Physical",
     "pp":1,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"splishysplash",
     "name":"Splishy Splash",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacentFoes",
-    "movetype":"Water"
+    "target":"normal",
+    "movetype":"Water",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"steameruption",
     "name":"Steam Eruption",
     "accuracy":95,
     "basePower":110,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"brn"
+      }
+    }
   },
   {
+    "keyname":"steamroller",
     "name":"Steamroller",
     "accuracy":100,
     "basePower":65,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"steelbeam",
     "name":"Steel Beam",
     "accuracy":95,
     "basePower":140,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"steelroller",
     "name":"Steel Roller",
     "accuracy":100,
     "basePower":130,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"steelwing",
     "name":"Steel Wing",
     "accuracy":90,
     "basePower":70,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+      "self-buff":{
+        "chance":10,
+        "self":{
+          "boosts":{
+            "def":1
+          }
+        }
+      }
+    }
   },
   {
+    "keyname":"stokedsparksurfer",
     "name":"Stoked Sparksurfer",
     "accuracy":1000,
     "basePower":175,
     "category":"Special",
     "pp":1,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":100,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"stomp",
     "name":"Stomp",
     "accuracy":100,
     "basePower":65,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"stompingtantrum",
     "name":"Stomping Tantrum",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Ground"
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"stoneedge",
     "name":"Stone Edge",
     "accuracy":80,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Rock"
+    "movetype":"Rock",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Stored Power",
-    "accuracy":100,
-    "basePower":20,
-    "category":"Special",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Psychic"
-  },
-  {
+    "keyname":"stormthrow",
     "name":"Storm Throw",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"strangesteam",
     "name":"Strange Steam",
     "accuracy":95,
     "basePower":90,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Fairy"
+    "movetype":"Fairy",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"strength",
     "name":"Strength",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"stringshot",
     "name":"String Shot",
     "accuracy":95,
     "basePower":0,
     "category":"Status",
     "pp":40,
-    "target":"allAdjacentFoes",
+    "target":"normal",
     "movetype":"Bug",
-    "boosts":{
-      "spe":-2
+    "secondary":{
+      "boosts":{
+        "spe":-2
+      }
     }
   },
   {
+    "keyname":"struggle",
     "name":"Struggle",
     "accuracy":1000,
     "basePower":50,
     "category":"Physical",
     "pp":1,
-    "target":"randomNormal",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"strugglebug",
     "name":"Struggle Bug",
     "accuracy":100,
     "basePower":50,
     "category":"Special",
     "pp":20,
-    "target":"allAdjacentFoes",
-    "movetype":"Bug"
+    "target":"normal",
+    "movetype":"Bug",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "spa":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"submission",
     "name":"Submission",
     "accuracy":80,
     "basePower":80,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Subzero Slammer",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Ice"
-  },
-  {
+    "keyname":"suckerpunch",
     "name":"Sucker Punch",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"sunsteelstrike",
     "name":"Sunsteel Strike",
     "accuracy":100,
     "basePower":100,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Steel"
+    "movetype":"Steel",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Super Fang",
-    "accuracy":90,
-    "basePower":0,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"superpower",
     "name":"Superpower",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Supersonic Skystrike",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Flying"
-  },
-  {
+    "keyname":"surf",
     "name":"Surf",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":15,
-    "target":"allAdjacent",
-    "movetype":"Water"
-  },
-  {
-    "name":"Surging Strikes",
-    "accuracy":100,
-    "basePower":25,
-    "category":"Physical",
-    "pp":5,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"swagger",
     "name":"Swagger",
     "accuracy":85,
     "basePower":0,
@@ -5630,32 +6606,27 @@
     "pp":15,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":2
+    "secondary":{
+      "boosts":{
+        "atk":2
+      }
     }
   },
   {
-    "name":"Sweet Scent",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Status",
-    "pp":20,
-    "target":"allAdjacentFoes",
-    "movetype":"Normal",
-    "boosts":{
-      "evasion":-2
-    }
-  },
-  {
+    "keyname":"swift",
     "name":"Swift",
     "accuracy":1000,
     "basePower":60,
     "category":"Special",
     "pp":20,
-    "target":"allAdjacentFoes",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"swordsdance",
     "name":"Swords Dance",
     "accuracy":1000,
     "basePower":0,
@@ -5663,29 +6634,40 @@
     "pp":20,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "atk":2
+    "secondary":{
+      "boosts":{
+        "atk":2
+      }
     }
   },
   {
+    "keyname":"synchronoise",
     "name":"Synchronoise",
     "accuracy":100,
     "basePower":120,
     "category":"Special",
     "pp":10,
-    "target":"allAdjacent",
-    "movetype":"Psychic"
+    "target":"normal",
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"tackle",
     "name":"Tackle",
     "accuracy":100,
     "basePower":40,
     "category":"Physical",
     "pp":35,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"tailglow",
     "name":"Tail Glow",
     "accuracy":1000,
     "basePower":0,
@@ -5693,41 +6675,42 @@
     "pp":20,
     "target":"self",
     "movetype":"Bug",
-    "boosts":{
-      "spa":3
+    "secondary":{
+      "boosts":{
+        "spa":3
+      }
     }
   },
   {
-    "name":"Tail Slap",
-    "accuracy":85,
-    "basePower":25,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"tailwhip",
     "name":"Tail Whip",
     "accuracy":100,
     "basePower":0,
     "category":"Status",
     "pp":30,
-    "target":"allAdjacentFoes",
+    "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "def":-1
+    "secondary":{
+      "boosts":{
+        "def":-1
+      }
     }
   },
   {
+    "keyname":"takedown",
     "name":"Take Down",
     "accuracy":85,
     "basePower":90,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"tarshot",
     "name":"Tar Shot",
     "accuracy":100,
     "basePower":0,
@@ -5735,11 +6718,14 @@
     "pp":15,
     "target":"normal",
     "movetype":"Rock",
-    "boosts":{
-      "spe":-1
+    "secondary":{
+      "boosts":{
+        "spe":-1
+      }
     }
   },
   {
+    "keyname":"tearfullook",
     "name":"Tearful Look",
     "accuracy":1000,
     "basePower":0,
@@ -5747,147 +6733,214 @@
     "pp":20,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":-1,
-      "spa":-1
+    "secondary":{
+      "boosts":{
+        "atk":-1,
+        "spa":-1
+      }
     }
   },
   {
+    "keyname":"technoblast",
     "name":"Techno Blast",
     "accuracy":100,
     "basePower":120,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Tectonic Rage",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Ground"
-  },
-  {
+    "keyname":"terrainpulse",
     "name":"Terrain Pulse",
     "accuracy":100,
     "basePower":50,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thief",
     "name":"Thief",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thousandarrows",
     "name":"Thousand Arrows",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Ground"
+    "target":"normal",
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thousandwaves",
     "name":"Thousand Waves",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
-    "target":"allAdjacentFoes",
-    "movetype":"Ground"
+    "target":"normal",
+    "movetype":"Ground",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thrash",
     "name":"Thrash",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":10,
-    "target":"randomNormal",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"throatchop",
     "name":"Throat Chop",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thunder",
     "name":"Thunder",
     "accuracy":70,
     "basePower":110,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":30,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"thunderbolt",
     "name":"Thunderbolt",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"thundercage",
     "name":"Thunder Cage",
     "accuracy":90,
     "basePower":80,
     "category":"Special",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thunderfang",
     "name":"Thunder Fang",
     "accuracy":95,
     "basePower":65,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"thunderouskick",
     "name":"Thunderous Kick",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "def":-1
+        }
+      }
+    }
   },
   {
+    "keyname":"thunderpunch",
     "name":"Thunder Punch",
     "accuracy":100,
     "basePower":75,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"thundershock",
     "name":"Thunder Shock",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":30,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"tickle",
     "name":"Tickle",
     "accuracy":100,
     "basePower":0,
@@ -5895,12 +6948,15 @@
     "pp":20,
     "target":"normal",
     "movetype":"Normal",
-    "boosts":{
-      "atk":-1,
-      "def":-1
+    "secondary":{
+      "boosts":{
+        "atk":-1,
+        "def":-1
+      }
     }
   },
   {
+    "keyname":"toxicthread",
     "name":"Toxic Thread",
     "accuracy":100,
     "basePower":0,
@@ -5908,290 +6964,337 @@
     "pp":20,
     "target":"normal",
     "movetype":"Poison",
-    "boosts":{
-      "spe":-1
+    "secondary":{
+      "boosts":{
+        "spe":-1
+      }
     }
   },
   {
+    "keyname":"triattack",
     "name":"Tri Attack",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Triple Axel",
-    "accuracy":90,
-    "basePower":20,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Ice"
-  },
-  {
-    "name":"Triple Kick",
-    "accuracy":90,
-    "basePower":10,
-    "category":"Physical",
-    "pp":10,
-    "target":"normal",
-    "movetype":"Fighting"
-  },
-  {
+    "keyname":"tropkick",
     "name":"Trop Kick",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+      "debuff":{
+        "chance":100,
+        "boosts":{
+          "atk":-1
+        }
+      }
+    }
   },
   {
-    "name":"Trump Card",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Special",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"twineedle",
     "name":"Twineedle",
     "accuracy":100,
     "basePower":25,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+      "status":{
+        "chance":20,
+        "status":"psn"
+      }
+    }
   },
   {
-    "name":"Twinkle Tackle",
-    "accuracy":1000,
-    "basePower":1,
-    "category":"Physical",
-    "pp":1,
-    "target":"normal",
-    "movetype":"Fairy"
-  },
-  {
+    "keyname":"twister",
     "name":"Twister",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":20,
-    "target":"allAdjacentFoes",
-    "movetype":"Dragon"
+    "target":"normal",
+    "movetype":"Dragon",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"uturn",
     "name":"U-turn",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":20,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"uproar",
     "name":"Uproar",
     "accuracy":100,
     "basePower":90,
     "category":"Special",
     "pp":10,
-    "target":"randomNormal",
-    "movetype":"Normal"
+    "target":"normal",
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"vacuumwave",
     "name":"Vacuum Wave",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":30,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"vcreate",
     "name":"V-create",
     "accuracy":95,
     "basePower":180,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Fire"
+    "movetype":"Fire",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Veevee Volley",
-    "accuracy":1000,
-    "basePower":0,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"venoshock",
     "name":"Venoshock",
     "accuracy":100,
     "basePower":65,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Poison"
+    "movetype":"Poison",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"vinewhip",
     "name":"Vine Whip",
     "accuracy":100,
     "basePower":45,
     "category":"Physical",
     "pp":25,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"visegrip",
     "name":"Vise Grip",
     "accuracy":100,
     "basePower":55,
     "category":"Physical",
     "pp":30,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"vitalthrow",
     "name":"Vital Throw",
     "accuracy":1000,
     "basePower":70,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"voltswitch",
     "name":"Volt Switch",
     "accuracy":100,
     "basePower":70,
     "category":"Special",
     "pp":20,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"volttackle",
     "name":"Volt Tackle",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":10,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"wakeupslap",
     "name":"Wake-Up Slap",
     "accuracy":100,
     "basePower":70,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Fighting"
+    "movetype":"Fighting",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"waterfall",
     "name":"Waterfall",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"watergun",
     "name":"Water Gun",
     "accuracy":100,
     "basePower":40,
     "category":"Special",
     "pp":25,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"waterpledge",
     "name":"Water Pledge",
     "accuracy":100,
     "basePower":80,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"waterpulse",
     "name":"Water Pulse",
     "accuracy":100,
     "basePower":60,
     "category":"Special",
     "pp":20,
-    "target":"any",
-    "movetype":"Water"
-  },
-  {
-    "name":"Water Shuriken",
-    "accuracy":100,
-    "basePower":15,
-    "category":"Special",
-    "pp":20,
     "target":"normal",
-    "movetype":"Water"
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"waterspout",
     "name":"Water Spout",
     "accuracy":100,
     "basePower":150,
     "category":"Special",
     "pp":5,
-    "target":"allAdjacentFoes",
-    "movetype":"Water"
+    "target":"normal",
+    "movetype":"Water",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"weatherball",
     "name":"Weather Ball",
     "accuracy":100,
     "basePower":50,
     "category":"Special",
     "pp":10,
     "target":"normal",
-    "movetype":"Normal"
+    "movetype":"Normal",
+    "secondary":{
+
+    }
   },
   {
-    "name":"Whirlpool",
-    "accuracy":85,
-    "basePower":35,
-    "category":"Special",
-    "pp":15,
-    "target":"normal",
-    "movetype":"Water"
-  },
-  {
+    "keyname":"wickedblow",
     "name":"Wicked Blow",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":5,
     "target":"normal",
-    "movetype":"Dark"
+    "movetype":"Dark",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"wildcharge",
     "name":"Wild Charge",
     "accuracy":100,
     "basePower":90,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"wingattack",
     "name":"Wing Attack",
     "accuracy":100,
     "basePower":60,
     "category":"Physical",
     "pp":35,
-    "target":"any",
-    "movetype":"Flying"
+    "target":"normal",
+    "movetype":"Flying",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"withdraw",
     "name":"Withdraw",
     "accuracy":1000,
     "basePower":0,
@@ -6199,20 +7302,27 @@
     "pp":40,
     "target":"self",
     "movetype":"Water",
-    "boosts":{
-      "def":1
+    "secondary":{
+      "boosts":{
+        "def":1
+      }
     }
   },
   {
+    "keyname":"woodhammer",
     "name":"Wood Hammer",
     "accuracy":100,
     "basePower":120,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Grass"
+    "movetype":"Grass",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"workup",
     "name":"Work Up",
     "accuracy":1000,
     "basePower":0,
@@ -6220,72 +7330,79 @@
     "pp":30,
     "target":"self",
     "movetype":"Normal",
-    "boosts":{
-      "atk":1,
-      "spa":1
+    "secondary":{
+      "boosts":{
+        "atk":1,
+        "spa":1
+      }
     }
   },
   {
-    "name":"Wrap",
-    "accuracy":90,
-    "basePower":15,
-    "category":"Physical",
-    "pp":20,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
-    "name":"Wring Out",
-    "accuracy":100,
-    "basePower":0,
-    "category":"Special",
-    "pp":5,
-    "target":"normal",
-    "movetype":"Normal"
-  },
-  {
+    "keyname":"xscissor",
     "name":"X-Scissor",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Bug"
+    "movetype":"Bug",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"zapcannon",
     "name":"Zap Cannon",
     "accuracy":50,
     "basePower":120,
     "category":"Special",
     "pp":5,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+      "status":{
+        "chance":100,
+        "status":"par"
+      }
+    }
   },
   {
+    "keyname":"zenheadbutt",
     "name":"Zen Headbutt",
     "accuracy":90,
     "basePower":80,
     "category":"Physical",
     "pp":15,
     "target":"normal",
-    "movetype":"Psychic"
+    "movetype":"Psychic",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"zingzap",
     "name":"Zing Zap",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   },
   {
+    "keyname":"zippyzap",
     "name":"Zippy Zap",
     "accuracy":100,
     "basePower":80,
     "category":"Physical",
     "pp":10,
     "target":"normal",
-    "movetype":"Electric"
+    "movetype":"Electric",
+    "secondary":{
+
+    }
   }
 ]

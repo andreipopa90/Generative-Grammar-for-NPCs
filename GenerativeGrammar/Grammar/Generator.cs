@@ -180,7 +180,7 @@ namespace GenerativeGrammar.Grammar
         private void HandleSourceNode(Node node)
         {
         
-            var reader = new JSONReader();
+            var reader = new JsonReader();
             var file = node.Source.Split(".")[0].Trim();
             var method = reader.GetType().GetMethods().ToList().Find(e => e.Name.ToLower().Contains(file));
 

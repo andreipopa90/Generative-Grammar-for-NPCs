@@ -1,4 +1,4 @@
-NPCS(LOGS)  := NPC : DomainAffix <- 1, LinkAffix <- 1, Weakness <- 1, LOGS.HasAilments ? Ailment <- 2 : Ailment <- 1, Heal <- 0 ~ NPC ~ NPC
+NPCS(LOGS)  := NPC : DomainAffix <- 1, LinkAffix <- 1, Weakness <- 1, LOGS.HasAilments ? Ailment <- 2 : Ailment <- 1, Heal <- 0 ~ NPC
 
 NPC         := TYPES : WT <- LOGS.CurrentLevel, WBug <- 1, WDark <- 1, WDragon <- 1, WElectric <- 1, WFairy <- 1, WFighting <- 1, WFire <- 1, WFlying <- 1, WGhost <- 1, WGrass <- 1, WGround <- 1, WIce <- 1, WNormal <- 1, WPoison <- 1, WPsychic <- 1, WRock <- 1, WSteel <- 1, WWater <- 1 ~ STATS ~ MOVES ~ AFFIXES : WA <- LOGS.CurrentLevel
 
@@ -43,11 +43,11 @@ MOVE        := CATEGORY ~ MOVETYPE ~ TARGET
 
 CATEGORY    := [LOGS.PlayerStats.DEF] "Special" | [MIN(LOGS.PlayerStats.SPD,LOGS.PlayerStats.DEF)] "Status" | [LOGS.PlayerStats.SPD] "Physical"
 TARGET      := [1] "self" | [1] "normal"
-BONUS       := [1] "Heal" : Heal += 1 | [1] "Burn" | [1] "Paralysis" | [1] "Poison"
+BONUS       := [1] "Heal" : Heal += 1 | [1] "None"
 MOVETYPE    := [1] "Bug" | [1] "Dark" | [1] "Dragon" | [1] "Electric" | [1] "Fairy" | [1] "Fighting" | [1] "Fire" | [1] "Flying" | [1] "Ghost" | [1] "Grass" | [1] "Ground" | [1] "Ice" | [1] "Normal" | [1] "Poison" | [1] "Psychic" | [1] "Rock" | [1] "Steel" | [1] "Water"
 
 
 AFFIXES     := [1] AFFIX | [WA] AFFIX ~ AFFIXES : WA <- 0 | [1] "NoAffixes"
             condition: DISTINCT(AFFIXES)
     
-AFFIX       := [LinkAffix] "HealthLink" : LinkAffix > 1 ? LinkAffix <- 1 : LinkAffix += 2 | [DomainAffix] "Domain" : DomainAffix -= 1 | [Heal] "Medic" : Heal -= 1 | [1] "Avenger" | [1] "Evolve" | [1] "Sturdy" | [1] "Lifesteal" : Heal += 1 | [1] "CounterAttack" | [Weakness] "ReverseWeakness" : Weakness > 1 ? Weakness -= 1 | [Ailment] "ReverseAilment" : Ailment > 1 ? Ailment -= 1
+AFFIX       := [LinkAffix] "HealthLink" : LinkAffix > 1 ? LinkAffix <- 1 : LinkAffix += 2 | [DomainAffix] "Domain" : DomainAffix -= 1 | [Heal] "Medic" : Heal -= 1 | [1] "Avenger" | [1] "Evolve" | [1] "Sturdy" | [Heal] "Lifesteal" : Heal += 1 | [1] "CounterAttack" | [Weakness] "ReverseWeakness" : Weakness > 1 ? Weakness -= 1 | [Ailment] "ReverseAilment" : Ailment > 1 ? Ailment -= 1

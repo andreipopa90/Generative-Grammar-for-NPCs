@@ -12,5 +12,22 @@
         public int Spd { get; set; }
         public int Spe { get; set; }
         public List<string> Types { get; set; }
+        
+        public object Clone()
+        {
+            var clone = new BaseStat
+            {
+                Hp = Hp,
+                Atk = Atk,
+                Spa = Spa,
+                Def = Def,
+                Spd = Spd,
+                Spe = Spe,
+                Types = Types,
+                Name = Name,
+                KeyName = KeyName
+            };
+            return clone;
+        }
     }
 }

@@ -433,7 +433,7 @@ namespace GenerativeGrammar.Handlers
 
         private string HandleDamageTakenFunction(IEnumerable<dynamic> variables)
         {
-            var type = new JSONReader().ReadTypeChartJson().
+            var type = new JsonReader().ReadTypeChartJson().
                 Find(e => e.Name.Equals(Npcs[^1].ValuesOfNodes["TYPE"][^1].Name))!;
             var damageTaken = variables.Select(playerType => type.DamageTaken[playerType]).ToList();
 

@@ -3,6 +3,7 @@ namespace GenerativeGrammar.Model
     [Serializable]
     public class Log
     {
+        
         private static Log _instance;
         public int CurrentLevel { get; set; }
         public Dictionary<string, List<int>> EnemyStats { get; set; }
